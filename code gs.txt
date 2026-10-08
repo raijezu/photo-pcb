@@ -1,0 +1,266 @@
+const SPREADSHEET_ID = '1o3DLZeA95ngap_a7ZNOownfiIBHw84ScpfOG0AiaNvc';
+// Opcional: ID da pasta no Drive onde as imagens serão salvas. Se deixar vazio, salva na raiz.
+const FOLDER_ID = '';
+
+// Nome da aba da planilha onde os registros são lidos e gravados
+const NOME_ABA = 'LISTA';
+
+function obterAba(ss) {
+  let aba = ss.getSheetByName(NOME_ABA);
+  if (!aba) {
+    // tolera diferença de maiúsculas/minúsculas e espaços no nome
+    aba = ss.getSheets().find(s => s.getName().trim().toUpperCase() === NOME_ABA) || null;
+  }
+  if (!aba) throw new Error('Aba "' + NOME_ABA + '" não encontrada na planilha.');
+  return aba;
+}
+
+const ICONE_BASE64 = 'iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAqU0lEQVR42qWdeZwcVdX3v+dW9TY9ayaZ7AQImyyiLEEkEDZRFBTBiIACisqDoiiCbOI8eURUFJTHBQXZ3FAjgsiiQcQALxAiyBrCnoUkk232pZeqe94/qqenurt6mTzz+VQmPV1dXXXuvWf5nd85V2jwZ/Hixc7SpUstoK5j+OJF3955+eNPHjM8MnZsLptbODwyPGd0LIOITHxIFRBA61y98n0t/Gni09rgnWpwap2vDU7RylO0zn1ZpakpRUtz+u14Iv5YurnpH0ctPPihn1571RrP8wFk8eLFZunSpX4jdysNniOATSYSHHHcJz/w+oZ1Zw/0DR6Ty+en5j0P6/uICMZIpQQbEVjESy0IcHIDoA2dpuUDVfXy0RdTq1hVxBhirksi7m5rb29/aNed5972/x5c+rdMJgtgCheoeUdOrTe7u7vN8uXL1RH0w6d+/pic23Hr62+tvaKvb2DfXC7XZK1vRbCOERERKZGeNCh7oUQQ2qAQ6gk/4tKFv4cEL42vyJIZGUw2FVFrfZ9cPp8eHBred8vW7Z+cPnf3ow5beMz6N1559k1VoLvbsHy5Tn4FLF7ssHSp//DDDzd/6YrrvrupZ8sXh4ZHENQ6xqgGIyw7MgNLVICW3Y02KIyihKvrG61QYRKtoqS+6gkv7GCqaXGFFnSZtdaKVUxLc5rZM6f/9CfXXHbpUUcdNQyLHYhWSVUGIPjAKZ/4wj4rnl912/a+/oOsl7OO66hqxKrR6EeuJX4NnS6RGqtRXaINKjht4PJac6yjVGvFShN83/PFuDEztaP934ceuO/Zd/7+ly9VG4RKYS5a5LL2fv9zX7ni2H88svLP23v79hSsZ4zjFGb9jmmIsg8ItcZKJ206ygWlJTOsivClsTsuUWESrdpCj2KMYwT1veGRsTlbtvefdMYnz3z+madufAMWubDWhq9tyj0dli/3Tj3ngiPv+9sjd/f29c5yDL6IuEV/QaPuTkEa8XQ0UljSqMop+d5K+yYVnoNScd/auMcT9WfRaK2lFR6cuMbgb+/tnfWX+x+6+9Szzj0SlnuLFy92Igegu7vbLF261D/r85ft9fDylb/Ztr037TrGV3CUiKHWMplqfZVTPLR0NWvEAEVOwzrfN/EddfwmqfxEPS2nqsER+kT0xCm5nuO6jr9te2/6Hw8/9ZuzPn/hXkuXLvW7u7tN2a2ogMizz/499dEzr3lk4+YtBziCr7W8JNValjN0g4GhldredW3bofV1dEXMMG5fxv2CSEMrdYSvRfskdQ18jVUDvq/qzJzR9cxff9R9xLve//6xwlU1EPDiVY55eZX957+3XbVx89aPiVoPEbe6RSq4AnUeIHhXSqMJaVj1Rvl/FbqmUiMGoil6xVXdzQachWBeNnjDUsu+GES9kdHs7GVP/cft37LuQdWXHFilZtzdPPXTFx26bXvfV30v74uIU18VaF3hB+LX4Bl04pikDSwIUct1Vvm4hga8oPullpbRBsZbEdXgvsu+p+pgVpmXgnF8L+9v2db31VPP/vKhsNRn8WLHYdUqcRyjQ/nETb0Dg3saESXK2wkbsx0IslQmYXAbjHBrBllVZ3+DEXWVZ9V60EeUi1RQgsaI5nKe29ffN3ukb+Nv9cWXxAD2Ayd95vD+waHjsL6tcE01NMoqDT2DoqgEul+l1HXWSaETGjl7texZtew2d9hFDsldtex3rShdIrSalhpkHXf71bf9/YPHHXvCaYdDgCKQi3V8c2Bg6EARtSBmR8LzinNCRnBS19HGwanGA6xGAjatUGnRajLCeGvjsYQI1vOtk83l7ND2t+8x1//vTbNGR8dO9H0PKRe+MkmLKRVB1qTjNADHgOuA44Lroo4DVQ+3+H9xnOBz40f4POPUv3OJDhWkbnAwGaMmxvd9RkZGT/zO9TfNcvrziRM29mz9lFpLKZZMNYyg7uzSCMelMVynIPzhEXR4CDJZGBuDTCZ0jE0cY2Po2BgylkELB2OZ4DNj4+cVXqtF4onqz6MSqUkafnSJgmQiB1IQ1Crp7Vt6n3ZHRzPHep4vYsQPdNTkoQWto4nqPs74zbsODAxgDj8COfkExJeSYDsqGi2q4TIfX1Qm3FKjZP/yV/KPLUfa2sDzJ2Z7lQGRyLi9hrrT6DBbIxwjI9h83nNGRoePdfuGhg601seYgvqR8iCrjujL7NB40FN0N7VBXMd1ob8fec97cH91IzSnMFJqR8bRB6H0b+UDIaGBEgv4kPzQRxg4+0zyTz2BtLejXr7yviPFrJUWmlqzXmsvkuCFserTNzh0oHTtfuho/8BgyjWmgOyO+40NooPlLpvWi1ejhO/A8Agybydid/4B2qchHrB9G2LtROynlQNShKLKZBUMkiLGwXRMBQe0byv9Z3wMf/06JJ0Gz5uEPa2VwNHINVOBegAqiiD4vk97W+uYtMx+l+Y9rxA56uSw/KipI43BxEU4wziQz0Kyidif/oDZfU8kDt7tv8P7zvegKQVWG4c/w8IyBh0bpfmiy0idfjpkwXt9NX2fWoxmRiEWB2vrxMf1RqfB6aalQYKqJea6SHL6vloifKn3rMHDVSa9ZPLZLJFAAJkMsVtvwRy9CFGw//wXuU+fg7oGjImMgEvvVateX30frNL+i9tILDwCAbKP/Iu+886GRLI48RpetVqOhWlEQFj2ugAmlfs0qoqkZuynjSY3SvzlcU1lnOBzeQ982yg8OvEzOor7g2twzjodyYC+sprsx09FsxkkHkPDM1R3IElgDJrNIqkmOn/9J9xd9kASMPrb39L/jYuQpqYSwLARp0EcB3FcVAR8fwK0i5of4/pTo+e2pKbvp40GKmF9po4JVMPgYBC7dXZAUzpwIxsIisQYdGgE54zTcC+9EEYV6d9C5pRT0XEd7XsNQjh16A+ug44M48zdham/WYo0d2JShqEf/oCRpb9F0s0Vqqgaw0J9Hx0bwe/vRa3itLRMrOQKrRPoe62FmTUyAFp+Q66LjIwEAdIJ70dPPB72eAekWxHjluZpItzGCSOqSEtL4KNLjtzpZ+I/uQI62gID2ZCFrJ+SFAViDra/n/iC9zL1pl+DH0Mw6PAQglR6UdV++x52eID8Wy8x9OD9DP/zfvA9pCmNFt1bbTgSldT0fbXRma/jHkv/IOyzF/r9JeghC4L42aGIepYLnvFcppYOhijgFTTYf30F786l0NkJBRdxh9XO+FyRYJCLfkIshr99G+mTTqXz2uuD5zJlbiuArZw45a4wXnDe2DMr2PK9Kxl79QWclrZgEIqQuNbwa7SRASjTiI4DA4Nw2KHY238CrVMwFhgag/88jax9G8ZylYGRVoKDQgFejjnYx5/Ev/9eaG0psyNEI42TyBlryD3QwjPo4CBNx51AYsF7IecXw3UJ+fSliRgpPoNJxInNnkNq74Mw6aaAITHcx/oLP8vo049jWtpQ32scvKk2AOW5VHEMjGXQuXOxD/wJae4AF2TZw/Dt78Grr0E+NwEf1sl/FaeWBeIuNLcU9GiZwdqRTJZqFUy+8GljsMNDaD4/QZ9q2LUUJBYnvsvudH3pCloWHgN5sIPbePOcj5DvWY9JJEudhxrXrhiACgrGeMhuDDI0jL39l/DBoxEf+PXv4MLLIBaDdFMV/E9ry00AtcWZr/VC/nruYQ0dXPIp45QsS6mS+ZSK4Cr4146OoJ7HrMu/R8dHz0QMDD78IOsuPgsn3VxlAMIMtIJrGj0AZUFWASBjwUHonXcgrsDjK+CUMyCVDFST7+9QHnfS8O54ilCkMtApHI3jOzUAzhpYkRZcUTwPmxlj55/+ifSB74G88tb5JzPy3EpMU7rMM4q+J1NOFhk3WuNp3+AwkMvBMUdDyoCn8OMbA6G7bqXwCWMHUayFctxdo98cl9o4pIxCNgPDw2h/P9rXFxz9/ejQMGSzoFrw0x1EqiGcEVQVKUXDVSHvWYwRQqTLieni+eDGUOuz7Tc/A18xCUPLe49D89lAZg38uBURXCjCnYieLbgx2Gs3xICs70Gffz6ACcIGp2QyS03ejkYld8OjZEwgiWwWRgeDm2lthTlzkRldOO1TkFRTMZjTvl7sli3YzZvR/j4QQZqaAgjat8EzVPvOcErXwNioRyLh0NESY/v2DCbuEHOlJFgTAfU9TCrN2MvPkd+0idQus0ntshvixstWTvUl7YYzQZFsEyUIuFwXmpoQB9i2OVBJrlOJH2ljakeioIvxJ3NMgOGPjsHMGZjjjsVZeASy7744c3dF2powycD0oGCzIKOg/aPo+jfxX3yB/OOPknvqcWxPD5JKQSpVGIjqqs4YITOS5wOHdbHk3L2Z25ziHyt7uejnz9I7ksNxHWzh80Xkxhj80SH83h5k/mxMKo04bmjAa9thV0oyBRO08ArPw0ig9yAIknw/GIAS0FvrcqsmTFvEia4TQBp9/chee2DOOA1z/Acxu83FpEHywCBI3xje9l4G+gYRoKWtlVhHB05bE2bOvshh+8IZp2FfX0922X2MLr2D/OurMS2tpSoz5N6KCLmsz25z09yx5EDak03kBiyf+tCe5EfhnB89ges6JQu1aIZ8C54XuKnGLbNPES51aMW5KtU1QYX5Cql1Ldf3Kg3O+ioz0HVhYADa2jDfvBTnk2di5rYH37duEP+pJ9EVK7GrXsR7ewOpsWGuPXtXJG+48jdvMJJKE5s9C2fP/YgffBDxAw4ltudcEnv+F+mTTmXkD79i+NYb8QcHMK2thUh74tGMAZv1OXSfKbSnUgxv8XFxyW/OsWiPmaRbEmQ9H1MwCMUgKyRs0VKQrhHumVuSC9UoKFZKCLVhek4kY7Umq1Cj33Qc2L4dOfwwnKuXIO/eO/ieF9bi//6P+Pfdi33rLcjncBIJcmPKh46dw5c/sScMpfjXYz38+fE3MevXkH3kYcZui+PM24XkcSeQ/uipJPaYR8dXLiB95Pvo+/aVjK14DNM+JfBSCvwmtUBMeH3DCGQcEsYhP6okm5tYu7mf7FgOJxHDjqsWjaYuVSeilsPnhcxMyHsrY61p5BIqcW7CBC3VmtSRcMJewmvYGOjtw5zzaZw7foO8a29k8wj26uvJffgkvOuuRd9+G2luRqZMRdPNuG1NPPXqEMvu3cyyBzew4q0B3JY0mm7GTJmKtLXj92xi6Oc/YvuZJ7H9+9cxun6I1H57M/2G39J22jnY/l4wE1bYqpJIuTzxUi/f+tVqRGMk42neXDvEpXf8G6t18oMahlqkuvsfEr4CroR0TukKkDoJiYnqBLRS/0uk6pGSNCbGQF8f8vWvYS69MFjNK18kf/Gl2JX/RtpaYerUQGf7FsRiVXEcYVNfluO/9UhxNsQcg7UK1kOHBlERjGMYW7+RttuvY+prj9Nz9pVMOWB/pl55NU7HFLb/7Ac47e2FIDAoPYonHL75q+e567G3mdORZsXrW9kymCGedPFtdcMq2ligKFpK2nQnkz6UMkPaSGVMqb+jpQZ3ey/y1S/jXH4hxoL96zL8L38VHRpCuqYFejqsq8d/WSXumolUyLjbmstAKk3qtE/ixFJkfdjL7ePOj+aZ5cb43I8v4oH1X2H2iR9i6hcvgmyO7Tf/CKe9s8SdTjTF+M+aPv7zxjZM3CWRdIveT/WnDIIqmSRy606WMyk2TB3TkuVUFcwrd21dF/p6kZNPwlxxCWLB3nUf3nnnQ8yFtlbI5cvTSqUkPdUQtuOg+Sw4cTqvu4H08YdjtsGAwFH+KnbrvRFis/jQ3v387mvn0B67mab3fYiu8y/De3sdg8vuxrR1TIBoVkkkXERcrNVgZbFjNYf1Anx3MheWcpCsRq1TCaoTdm2NwNgo7LYbztVXYeKC/ceTeOdfAPE4xJyJZDml3FKJIigYg81nEeMw/fqbaT5qIZvPv5zM4w+hiTS/JccBH5vHnI4837v/NZx0io1XfIlZ6Q5a3vteZlx8NZlXXiDX8zYmniz672q1WN4hjWRLNDL4L0nlSgSpwt1hImVNKEWr19GJQD6P880rkblT4NWNeF/5CiKKk4xh8z62nOIynoeu4Jg52FwWcRxmX3cLrYsWsuGCixm481ZMugVRS6+Fs364CUfAF0gkk/iZUXqWfIXkjXeT2HkWM77036y75CxIJAP5l8U02ignsKqh1kgOQYgF3Ri5UaqMclVOZXlxhONA/wDywQ9ijj8WGbF4V12NrF9H1k0ysnWUsYwX4CgScPylAEhJ2WvjONhcBhyHedfcwrTDF7Lpwovpu+s23M6uAIJIpIilUiRTLm7SJRl3UM/DpJrIbVjDlp9chY5a2ha9j9ZFH8QfGigEm/UyWRoZ/EuEOZQaRT6FfFCD9JFQMl60skpJyzjEqhHfaC0kkzif+zymCXTZv9B77iGfbmO3rhhXfXlfDttvKpmhIXRsFH90ZOIYmzhsZpT88CA4MXa7+ha6Fi5k3cUXs/0vt+F2TAt0uQ3wH7UWawu/x8Ecz8Npn0L/srsZfvRhnBR0nXpeoIKsbVD4WuEQSolHVFnSFOU1uQ0ZEhMo4fLZL41Wq0oBfx8cQI4+GrPg3bDdw7/xF6gEl7/5kndx+IEzOfdIh+NHT2SbmybhT0TfxhZ+K4gKksuRmDabprnTefWyS9hy723ExoWvUZmfMgpJQR1uv+MG2t6ziPR+B9B84EIGnngIt6U1oLPUBFQ0lHoss5FShvRGDIIWbsKl4cJ+rVGsoNUTMOETfYtz4olIm6B/WYF9agXS3AxZj9yIgeEk+WEfHRxCXA8JDYCE4r1xT8wbXc2rN36XnmW/I9Y+tSwVWLsCXK2P09TM8HMrGHn6SaYctZApR3+YgceXTTr/rOEcuFLHMyz9kFt3kMOMAUtJuU5ZBrX60hAJ8gkzZuAcehgmB7n770czWSTdjAXOufZpTlvYyz+e3cwzL91ELGZKfG+tytExxNqmoNYvB6giy2PDNkqMweay9D98Lx0LF9Ky/+HEp87EHxkMaO+NQMoaQUaIuIOKsLYQAbu16w+qkHS1vNuI1ugaECBdmsngHLIA2WkmbBzDPvkEkkqhvo8bM6zvHeO7v38OEg7JKe1oRInmuBerKli1xbuyvlc00Fp0Y7S+WbM+JpFk+Lkn8LaMkZo5k6b576B/5XKcdCuo30jLlYryWa1aR1zpOprJtACQMtBJo+pUNIKRagLX0+z9TkwL6GurA3wnES+kECHuGNJtSVIJN6iUssGhoQO1ZDMefi5PzCiOWBxsAEN4SjbvE1VjQlQVrwRGUuJxcpvWk1m7GjcNTfP3R718qFRC6tYFjCsKU9NGamTNukstwUUNgB1PVIcOrUV70OLUNbvuHGTU3noDb3gY096B4wQDYAsEiSAhU76IFKOWfNbyjl3S3HjlfnTEY9i8gHVwrKFv2PK561byyvpB3LhTQnUthf7DMUWQvvSGh8isfQ1z6LtJzd2lkE7U+uSAkKaQKvzhEjAygn/rVhTE1YKvtbJYokJLRS0FtRCPI11TcRQGX99Icwy8mGFkWz8JqeL6FSAHXBfT1ow/kOfw/Ts47OAu/C0ejjrgOdisYOanOeIda1j1ei+JpIPnR5hiDdmrUJiu6pPf3IP4kJgyDWLxGrSS8hHVkjggmqytpTXO2iAUEZnE1ho6sNroWIvEYritbYyOwMKdLDfdciT9Yy18/K5+1pMKEhzjkHUo7SeuQXq2oM8+C06SvCfYAcvYCLgW8BWbg6Ra8vkJlaD1KnnKTvAGe8EHt6kVx3XrM7J1IplbHnxGdhSocj23tCCjenmtRtiAKl0qqtJJ3FiM/lE4+7Bp7JafDsMpPnjzhfx06p6kgkKW4ncYDXSSETB50G9+B665Dsl7GI1h/DxGHbAGfMH4Til9MCLoUankChkjAV6bzwUenhMrtSPl3nURBJQKL0d0wjEx9bs5jKsgqYpVSNjN1Imq8eopgxr9v1Txc3maU3Dzw9s4pGmAgYzPfd//Bq5JFj0CCfvQYvDzGdxTPkHbdy8j07Ez+vzt2LxB/RiqBjwH9QXruyAxxHXBcTETNVIT6YfyO7M+meE8eD5OLF7gquZRtROtDirUcumS1wjDKmFkoE7hixvRT6qiqEzQwuyRyk4x2gBd0Bh0bAzb3086CSs2CQf/5AH89k7G+vtJiOLXQFq8Rx8j/uJLTLniSqatnYXZehsp6cTkLXgWzQli8jDQi45sxfMS5K1GJpGK2JRVTKqFIxfM5pWXRvES7bgO+MMDgRfkxiZYuiVaWEPymch2TARiUpamre0ORyZkSgQ/PsqFpRdOyos22PiigICyeRsotOw6m34FRy3JthZs2VNKRDVK3y/+l9grb/HCNy7j2daFNA8PYmMxRAyOwAAtvLXoXObuNUTcNQWXSiOp8Y7AaAYu2O9lLjg2yaqn9uAL/fPJe+D1bsPmczipNGqj4eQozRIOxIpSqyp8rU7MqgmijjeuKLACJlMNo9biv/kWkgczbz5uugWsj61f4xosos5p5B67j4fOfYs1X7uG9lnz0byHqGBQPDU4C1rYwwnwRROO2rU0indUGfUNx8y8BTP8GvvutDPzZ+7NaxnIrH8z8NoKDDUpU2MSkfO24YmjjYLXWroChAb6dKqU2IXGiujHaegu3svPwyC4u+6FmTMHf82bkBhPgtRJe/gepq0Tu/F1Xr/kE7gtnYVItVDrB6j1yp4/2vMwImTyPp/dtZVLT9qNZzc3s/rYGTTnYPCN5xA3hlqtrAyiqrc8MTEbbi0QPK8rES1mqk1ICVHHpcbsL/VIg/IdSSbxX34Zf81G4nvNIn7woYyuXhXQC8trAgCnwMkMUoIUCWGSTIP65Ie2llANVGpwcqrc38qXxzhl5UtMOeHzHDA9zdgbGxh6cxWmMCnGS4woG4TKyHrHmtOWkHMrcGuN0gYSmXSInvSFjikFXJxYHLulB2/Fo4gDyeNOKJv9pcHe2Eie0b4smYwfDLYtrKQC3CzGRYwTHI6DMQ4mnsA4seIhkYcbvGdckkkHt6WVXd93clD48/yj5Lb3YNx4AVMqdh6KlJGEciXCuBc3uayiqQAoavRhEtUACq41yVQjEQ0pVKdkH7gX+pTkQQtIHHQIOjxcKEUtCN8I2azPKcfM4mdXHsy+89vJZ/2CQ1FogWM1dAQzVX2LHRycCMTCpIGSI4jMxRhyw4O07fMeWvdZgD+obH7kL2CcqvT2yEKQ8GrXCTe6bk+68XK7igIEqd8YRKoVxoarwcs1me8j6WayKx4jv/LfpI46mJazziO74v+VBEXZnM/uc5r57eUHk8DlnYcvZNFOH8cPJYSMLRwKxgZ9IYzNkvvfG8jefjPS2lbgGto6lTrC3I9+gUSLw7YnnqLv+cdwm4LiCqmFoobrlyqaGErdtmhhSMjVMLEqCtuRsqq3KHywrHNpFEuuSMTKZRn51c9JHnQQqUWLaDrhZEbu+gOmcyp4eYwII2Me6zf47DalhQ1v9CNvryRhHNROeGFm3LPBILkssXm70nb9dxneZT793/1WAP4lA7h7nBgWQNkWcWLk+rYy432nMW3BkXgjyrq7b8DmsjiJZJGoFdlDoujXSgUzU2rREqvkBtyqvW8iIl4pwJZSFRPS2lGB7yEtbYz9429kli0jfeL7mXLB5WSfWYm/eSM21UTM9dm4PcOJ33iUQ3bv4q9PrsFu/TGeMdiyaaTh+0okkS9fwqyvfom2ufvy9hXnkd+2ERNPYa1FULK+YGJx7Mgg8Vm7s/unr8SJCz0P/Y0tTzyA29xWTEVqzXSrlOIMYXe3TvK+iPxomJZSs4NtGTk3stWO1mOmh+FNiMXpv3YJyf0PJDZnBl3fup5NXzgdzeewboxEAlZvGGT1W704TXFiXdMqmGklulYErM/Wa/8H/6XV7PY/1zPlpgd4/X8uILt1A04sRi7ns3sn/Pi8XRjdMsaPUudhZk4nu3Ebr93SjYnFSshfUrXfQ5VWZYTZr1o1v6WhF1obDa2s35GIGjhCFBppqOOIYlIp8uveYvtVlzHj2htpWrCAGVf/lJ5Lzi0kSRIk4oqTTOBZRQv0RCkBFcuwdRHcjk56//5HVq15jf2uvJH3Xv9H7CDEBQYsXNDyT45x7oThaWzKpbk1B+t/dhGjG98k1tIRZNYizabWEY1WMcKVgEANYlaDblM4JyCFTErZqqxZDAcBN6etg5Fl99D7g7lM+/o3aTn2/ZjrbqXnivPxh/pxWtrwfK/E1oW/R8qZc6qo7+F2dDL8xvM889WT6DrwaIzEcByHob4B7tgzzlEf7SQ36PDc1D1Yd9O36Xn0HmJtU0uE30AAGxmgRiVlpLyEokxGVbih0mA8IWhd+liVu/YDbk7f7T9FXJeuCy6n9YijiP9iKT3fuZSRp5/AaW4JCFbWojqRdBcRcjmLY4Jr+wrxWNDvSL08broVb2yQdQ/dgeYz4A3SsuehvHzKjzjX2RvpSvDoL7/PpjuvJdZayqaQKGixgf5VYss0RBRCr1TQY9zJdJQtJx6V+PwNdZAr+wrr47Z30Hfz9dj+fmZc9N807bM3O/94KX1/vIltv/8luc0bMMkmTCKJOAWB5y2zpyb51TcOQnIOn/rOSnoGM7gxpwCd+1jfA+uTmrELcz/yWeZ8+POkWl029+d45SeXsfn+m3FbO1Hr1WnGrfXxRtFSamJU/XFZ24SQFzS5lvFh/17L4FZpuMlRyJPxfZz2DvrvvI3cm6uZefG3Se+7H9M/ez7tx5xE331/pP+hv5Bd9wY2n8WNx/BGlYMP2omjD50HQ0kOnvcqdz++FZN0yOdymFiCprnz6TriI8w89lSa585BFHpfeJ5XfnY5fS89gdvWGd2NpVpySetl5cO8oKhiR62dD2ikc22JPhvHMSqQizJzXBXJmljo6vu4HZ2MvfA0a879GFNP/xxTTz6b1K5zaDr/QroW/xejLzzJ8LNPkXnteTI9b/PPV4e47uY3Ie/wzzWjpOfvSWr6bNLz96d9v4Np2+s9pKalEYXMhm28fd+trL3rRryxIWKtnUWdL5Ek4gZmfdmbJXypQn11eUKoCj1dGmsBENHtRKtl/xtaAWXrxfMwzS2o59Hz82vof+BOOk84jfYjT6Rp3i40HXc0U485GjsCOpAlNzDADf39CMoeR7STbGkn1pwg1lSAiIdh+NW32PLYPWxc9jtG1r+O29yK29RSYXCrBll18Xyp2ta3CGeo1ITr3IZaSoaqt8OYd0Wn3mr6voHWBYFh9hFjcDumkNuyiQ0//RZbfn8jLfsfQssBR9C85ztJztiNWEsLLW1ddOzahVHwc2DHIL99iOGXXmfo1efpe3Y5/S88SbZ3M06yiXhbZ8Ces36ddp8yiR2goj3EorhU62ZMGnZD1Sri+8FSc+NlnWgn3WK3enFHwZ008TgmkcRmR+ldfh+9D9+D09RCbEoXsc4uYi0dOIl0gHZnRvAG+8j2bibfuwVvdAjEwUmNC94WZ309rmZ94VdCAOI4GDcWzHzrFbCkOlFRQWQNsKMLRbReLujH4IHbORPT3IIt4VBObpMcrdOlJICDLWIc3Oa2wNb5Prltm8j2rCsy5YoqwziI62LcGLHWKQU1UPCGarnwk+oBrRUJevU93KY2ku2zUR+8kWGs72GKNMnaVX2mZrlHOITzPHKvrgYfYjO6SL7rIOzoSKGJxv+1AXeoAYpUdhxU6xcxGonFcZqaA33e2h4czW24qTQmFp/o62b9iTx2Iy2eZfI7Bonj4mdGmLLXApqmTQcPBtesBi9X0QU6uh2/YDQEfmsZ5FpMRlgLiQSjjyxDRzxQof3TX0SSTZDPBr0R6rap0UiUfMLx0CKGXzvZY4MBsT7qBQMTCNwWkjbj961Vt5xRGoPsozatKVJcHBfNZzHxFLuf/CVQ8Mc8elbej8QTtWd/MXq3auLxmJQnFkRKqXZiLSaVJvfCfxh98F5MTEjsvT9d37wGzWTxhweDM42DuE6xreN4R3MJdTcPHyb0nol4P/pwS1+b6Osaxw1+m6Bzuil0UC9+xpR91kQdbugI/mZM0BwvPzqAzed49xd/SPv8d+O4wqYn7qH/1WdwkrUaNgUCVlUSsbhI164HDvb2DbY4BTZB1fknAXvM7ZjK7Nvuwu2ajSiMPf0422/4AdnVL2AzY2D9MqqQ7lgL8KjdKEJ5i9qsM63ReF6h0eArymIZg5tI0T5/f/Y8/TKm7vNeUMhsWccjl59AdmhbIaWpVckBQbtRS0dH25DstM/CFZs2bVlgjFhFjdQocME46OgQ8d33ZtaPfkls5lzIA3lL7o2XyW9ai2YyJTmc8v+XxDkRVEIJN/Wr0y1dq3RQl6qNAqN7TE+cqyUaIOocJ54kNW0erTvtg3EMxoHM1rd54qpPMbD2JdxUc2B/olTyxISy1qqZOWvGU7LfIR/48atvrDm/8CknknQU1oCOix0eJDZjLl0XL6H58GMDAq0JdRPTKoKp1vncVq/CrNbHs7wiJfyasvPCrSijriMR5KqoLu0lcIMPNmfpWfl3Xrz1Ska2rMNtaqnSMbFidfsgzh677/wTt6Ol5cFY3P1iNpM14RZfWq26w/Mw6Ra8rT1s+NpnSB9yOC1Hn0Bqj30xLVMxTqxyFlb7HTVYZf1Go15X+x117fIicyJXnxZ7OEjE56VIShPUz5Eb2srgWy+w8fF72PLccozrBjN/XPjleYKyH2utSSaT2tHW/qD88W9/m/LFL3zjmb6+/nmOY7QS4KwCT5jAg7UjQ+B7mKYWpCld4FRqFV5RRBV9wxspaQOVR9rAnxrx+6u3eLT5HF5mGDs2DI6Dm2oJxS1ltirqMiLq+750drSvveGX1x4gAszff9G16zduuVB9zydyD7Ea0ZwxQW1W0fe2DcAn2lCb8MkGSI2d1liDcqnKgpOiN0UhRmmojcDEjPMRx5k9c/p161956muuAgftv/ftW7b3nz86kncdkXC30OpIg05QvDXUVVxxomMaLRWUaWSzhP/Ljqu6Iy0YSvYIjtwBSgv56OrdcbVayB1I36o0N8VyB797v9vXvfIUDix2Xn7hVz1zd3nHXoPDo/sLtrLSreauEXVa+uukdU0DL7V+Ckm1Sn81am4BWtG8EJ3EoNfFkXwjjjN7Rtfvn3zk3htUcQzsrb5VOWrhe65KN6UGfWuNRA2j1inXp0qtxgTBvbHtbquEr7V2XI38i0DtjVI1OnNdwSqXUFFivWxVPYK4muZ00+Cxxxx2lbUBTu3Acl28eLHz69t+sXX+XvuPDQ6OHO9bz5dGO49Ww3i03MerR1Oq0v9GyjbprLfJmu7AKqPa5m2NJ6vqOQhqre/GYs68nWZd8ve//P4+Fi92WLXKhr/TqCq7v+uov65dv/F4EeuB1Ejaa7S/oFVoAJPd3a6i5bQ2vn9lXaKANmAuJvN90eonVNzhqeLO22nOA2++9MSJBaDOAmpCoKMVEXvGGR/8zNTO9hd9HxdVr5KNJSUbJpeXNQXdZLRBvS9Vq/DDO5qGy4JqopthXojW9nE0it9f3L1W6wOlJVBLtPoZF77vqzu1s+PFMxef/BkRsaoU+fgmDPV0d3fLkq9/veeTp57ysVkzu9b7tjAIGq33JcqUaSPwT1T2OopnqiXVnZGbeGsI99RG9H6lgMvvXRuxMVUq38uG2vOturNnzVh/2scXf2zJkq/3dHd3i0j03qNAsK/80qVL/S9d1r33nX/++x1bt/a+E/U9Y8QpZ55LxarXSewhqTUrwrXKIFd24JrMhpVa1dMNA0yTaVMW5SGKiPrW9wXjTu/qfP5jHz3+tB9f+51V47INX6ki6Fq1apUuXrzYufUXP9ty/oXn3bVuTc+80Ux2v3zeE2PEK9cbEs49N7ynpUbOeC1p6CglRdAaselm45toavRm2eH8e3mBYL2InEq0tvAIvu/7TiKWMLNmTl/6hU+ffPp3rlqyJkr4Nb+vu7vbLFmyxLquw0GHf/irr7+19hv9/YNTFItjxCvECkZDZFmdzCzUajQ06hAbJ+N3R8x6CcE01Vu81L/3UqTeqqr1rboGQ0dba+/8Xedd9cyTf/+h5/nQ3W1YsiQSIqi6x+vy5cu1u7vbPPzww7JhzeonTjv9rD/n87nWXDb3jrznx31rJUj5qR/q6yaNuQy19sZstIXaDsz8qnlyaVj2QVucYh2qtarGWsQ1xrQ1N2fnz5/3m2OPOezM++789f3Wqunu7pblVYQ/mW3dHcB3XYfP/NfX91r+xIrT+7cPnDScGd0zn/fjvucHXlWhxKhyHBoDyRpeQTuws1K0uZjclupa6LSlBeZVzHFwXTeXbkq+0tnecfeiRQt+d8vPr1/tBZ1CnEL3hcYZITV/gmUEYINC8w1Nx51y2UFr31x3JMLCgcHhPXwvv9PIaEY8z6vdvn1HhK+ThzJqu+k66cF2Yy7NqZQ6rruupbX5VUd4bPacOf/6501/+LeZLaM63hGhuxtqzPrwz/8HmKX477aO2T8AAAAASUVORK5CYII=';
+
+// ===== API para a página hospedada fora do Apps Script =====
+// No iPhone a câmera ao vivo não funciona dentro do Apps Script (o Google abre a página num quadro
+// sem permissão de câmera). A página pode ficar num site próprio (GitHub Pages/Netlify) e chamar
+// estas mesmas funções por aqui. Publicar o web app com acesso "Qualquer pessoa".
+const CHAVE_API = 'NykRSZf_XpRYdJGDgLl7Y7R_'; // a mesma do index.html
+
+function doPost(e) {
+  let saida;
+  try {
+    const req = JSON.parse(e.postData.contents);
+    if (req.chave !== CHAVE_API) throw new Error('Acesso negado.');
+    const acoes = {
+      obterRegistros: obterRegistros,
+      salvarRegistro: salvarRegistro,
+      atualizarFoto: atualizarFoto,
+      obterFotoBase64: obterFotoBase64
+    };
+    const fn = acoes[req.acao];
+    if (!fn) throw new Error('Ação inválida: ' + req.acao);
+    saida = { ok: true, resultado: fn.apply(null, req.args || []) };
+  } catch (err) {
+    saida = { ok: false, erro: err.message };
+  }
+  return ContentService.createTextOutput(JSON.stringify(saida)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function doGet() {
+  const saida = HtmlService.createTemplateFromFile('index')
+    .evaluate()
+    .setTitle('PHOTO PCB')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1.0')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+
+  // O ícone nunca pode impedir a página de abrir
+  try {
+    const iconeUrl = obterIconeUrl();
+    if (iconeUrl) saida.setFaviconUrl(iconeUrl);
+  } catch (error) {}
+  return saida;
+}
+
+// Ícone da aba do navegador. O Apps Script só aceita uma URL pública de imagem terminada
+// em .png/.ico, então na primeira abertura o ícone é salvo no Drive (compartilhado por link)
+// e o ID do arquivo fica guardado.
+function obterIconeUrl() {
+  const props = PropertiesService.getScriptProperties();
+  let id = props.getProperty('ICONE_ID');
+
+  if (!id) {
+    // Aproveita o arquivo criado pela versão anterior, se existir
+    const antiga = props.getProperty('ICONE_URL') || '';
+    const m = antiga.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (m) {
+      id = m[1];
+    } else {
+      const blob = Utilities.newBlob(Utilities.base64Decode(ICONE_BASE64), 'image/png', 'icone_photo_pcb.png');
+      const pasta = FOLDER_ID ? DriveApp.getFolderById(FOLDER_ID) : DriveApp.getRootFolder();
+      const file = pasta.createFile(blob);
+      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      id = file.getId();
+    }
+    props.setProperty('ICONE_ID', id);
+  }
+
+  return `https://drive.google.com/uc?id=${id}&.png`;
+}
+
+// Grava a imagem (data URL) no Drive, com link público, e devolve a URL usada na planilha
+function salvarImagemNoDrive(imagemBase64, nomeBase) {
+  const partes = imagemBase64.split(',');
+  const contentType = partes[0].match(/:(.*?);/)[1];
+  const bytes = Utilities.base64Decode(partes[1]);
+  const blob = Utilities.newBlob(bytes, contentType, `${nomeBase}_${new Date().getTime()}`);
+
+  const pasta = FOLDER_ID ? DriveApp.getFolderById(FOLDER_ID) : DriveApp.getRootFolder();
+  const file = pasta.createFile(blob);
+  file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+  return `https://lh3.googleusercontent.com/d/${file.getId()}`;
+}
+
+// Devolve a foto cadastrada como data URL, para o editor (evita bloqueio de CORS no navegador)
+function obterFotoBase64(url) {
+  const m = String(url).match(/\/d\/([a-zA-Z0-9_-]+)/) || String(url).match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (!m) throw new Error('Link da foto inválido.');
+  const blob = DriveApp.getFileById(m[1]).getBlob();
+  return 'data:' + blob.getContentType() + ';base64,' + Utilities.base64Encode(blob.getBytes());
+}
+
+// Substitui a foto de um registro já cadastrado (a foto antiga continua no Drive)
+function atualizarFoto(dados) {
+  try {
+    const linha = parseInt(dados.linhaIndex, 10);
+    const coluna = parseInt(dados.coluna, 10);
+    if (!(linha >= 2) || (coluna !== 1 && coluna !== 4)) {
+      return { sucesso: false, mensagem: 'Registro inválido.' };
+    }
+    if (!dados.imagemBase64) return { sucesso: false, mensagem: 'Sem imagem para salvar.' };
+
+    const sheet = obterAba(SpreadsheetApp.openById(SPREADSHEET_ID));
+    if (linha > sheet.getLastRow()) return { sucesso: false, mensagem: 'Registro não encontrado na planilha.' };
+
+    const codigo = String(sheet.getRange(linha, coluna === 1 ? 2 : 1).getValue()).replace(/[^0-9]+/g, '_');
+    const url = salvarImagemNoDrive(dados.imagemBase64, `pcb_${codigo}`);
+    sheet.getRange(linha, coluna).setValue(url);
+    return { sucesso: true, mensagem: 'Foto atualizada.', url: url };
+  } catch (error) {
+    return { sucesso: false, mensagem: 'Erro ao atualizar a foto: ' + error.message };
+  }
+}
+
+// Códigos já cadastrados na planilha, um por item (pacotes "48683 / 48682" viram dois)
+function obterCodigosCadastrados(sheet) {
+  const ultimaLinha = sheet.getLastRow();
+  const codigos = new Set();
+  if (ultimaLinha < 2) return codigos;
+
+  sheet.getRange(2, 1, ultimaLinha - 1, 2).getValues().forEach(function(linha) {
+    // linha antiga tem a foto na coluna A e o código na B
+    const celula = /^https?:\/\//i.test(String(linha[0])) ? linha[1] : linha[0];
+    String(celula).split(/[^0-9]+/).filter(Boolean).forEach(function(c) {
+      codigos.add(c.replace(/^0+(?=\d)/, ''));
+    });
+  });
+  return codigos;
+}
+
+// Salva o registro e faz upload da imagem
+function salvarRegistro(dados) {
+  // Evita que dois aparelhos salvando juntos passem pela verificação de código repetido
+  const lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(30000);
+  } catch (e) {
+    return { sucesso: false, mensagem: 'Sistema ocupado, tente salvar de novo.' };
+  }
+
+  try {
+    // Vários códigos no mesmo pacote ficam como "48683 / 48682"
+    dados.codigo = String(dados.codigo).split(/[^0-9]+/).filter(Boolean).join(' / ');
+
+    // Padrão por pacote: um número para todos os códigos, ou um por código ("5000 / 3000")
+    const quantidades = String(dados.quantPacote).split(/[^0-9]+/).filter(Boolean);
+    const qtdCodigos = dados.codigo.split(' / ').length;
+    if (quantidades.length > 1 && quantidades.length !== qtdCodigos) {
+      return { sucesso: false, mensagem: 'Informe uma quantidade para cada código (' + qtdCodigos + ') ou uma única quantidade para todos.' };
+    }
+    dados.quantPacote = quantidades.join(' / ');
+
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const sheet = obterAba(ss);
+
+    // Não deixa cadastrar código repetido (nem no mesmo pacote, nem já existente na planilha)
+    const novos = dados.codigo.split(' / ').filter(Boolean).map(function(c) { return c.replace(/^0+(?=\d)/, ''); });
+    const repetidosNoPacote = novos.filter(function(c, i) { return novos.indexOf(c) !== i; });
+    if (repetidosNoPacote.length) {
+      return { sucesso: false, mensagem: 'Código ' + repetidosNoPacote[0] + ' digitado mais de uma vez.' };
+    }
+    const cadastrados = obterCodigosCadastrados(sheet);
+    const jaExistem = novos.filter(function(c) { return cadastrados.has(c); });
+    if (jaExistem.length) {
+      return { sucesso: false, mensagem: (jaExistem.length > 1 ? 'Códigos ' + jaExistem.join(', ') + ' já cadastrados.' : 'Código ' + jaExistem[0] + ' já cadastrado.') };
+    }
+
+    let imageUrl = '';
+
+    if (dados.imagemBase64) {
+      imageUrl = salvarImagemNoDrive(dados.imagemBase64, `pcb_${dados.codigo.replace(/[^0-9]+/g, '_')}`);
+    }
+
+    // Colunas: [A: CÓDIGO, B: QUANT. PEÇAS PAINEL, C: FORNECEDOR, D: IMAGEM, E: QUANT. PADRÃO PACOTE]
+    sheet.appendRow([
+      dados.codigo,
+      dados.quantPainel,
+      dados.fornecedor,
+      imageUrl,
+      dados.quantPacote
+    ]);
+
+    SpreadsheetApp.flush(); // grava antes de liberar o lock, para o próximo já enxergar este código
+    return { sucesso: true, mensagem: 'PCB cadastrada com sucesso!' };
+  } catch (error) {
+    return { sucesso: false, mensagem: 'Erro ao salvar: ' + error.message };
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// Retorna todas as PCBs cadastradas para a aba de listagem/pesquisa
+function obterRegistros() {
+  try {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const sheet = obterAba(ss);
+    const ultimaLinha = sheet.getLastRow();
+
+    if (ultimaLinha < 2) return [];
+
+    // Lê da linha 2 até a última linha, colunas A até E
+    const valores = sheet.getRange(2, 1, ultimaLinha - 1, 5).getValues();
+
+    const ehUrl = v => /^https?:\/\//i.test(v);
+    const ehCabecalho = linha => linha.some(c => /^(c[óo]digo|fornecedor|imagem|quant\.?)/i.test(c));
+
+    const registros = [];
+    valores.forEach((bruto, index) => {
+      const linha = bruto.map(c => (c === null || c === undefined) ? '' : c.toString().trim());
+
+      if (linha.every(c => c === '')) return; // linha vazia
+      if (ehCabecalho(linha)) return;         // cabeçalho repetido no meio da planilha
+
+      let codigo, quantPainel, fornecedor, imagem, quantPacote;
+      let colunaImagem = 4; // coluna D no formato atual
+      if (ehUrl(linha[0])) {
+        colunaImagem = 1; // linha antiga: a foto está na coluna A
+        // Linha antiga com colunas deslocadas: [IMAGEM, CÓDIGO, PEÇAS/PAINEL, FORNECEDOR, PACOTE]
+        [imagem, codigo, quantPainel, fornecedor, quantPacote] = linha;
+      } else {
+        [codigo, quantPainel, fornecedor, imagem, quantPacote] = linha;
+      }
+
+      if (!codigo) return; // sem código não dá para identificar a placa
+
+      // Códigos antigos separados por ; , - etc. passam a aparecer como "48683 / 48682"
+      if (/^[\d\s;,\/\-]+$/.test(codigo)) codigo = codigo.split(/[^0-9]+/).filter(Boolean).join(' / ');
+
+      // Converte links de visualização do Drive para o formato de imagem direta
+      if (imagem.includes('drive.google.com') || imagem.includes('/d/')) {
+        const idMatch = imagem.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (idMatch && idMatch[1]) {
+          imagem = `https://lh3.googleusercontent.com/d/${idMatch[1]}`;
+        }
+      }
+
+      registros.push({
+        linhaIndex: index + 2,
+        codigo: codigo,
+        quantPainel: quantPainel,
+        fornecedor: fornecedor,
+        imagem: ehUrl(imagem) ? imagem : '',
+        colunaImagem: colunaImagem,
+        quantPacote: quantPacote
+      });
+    });
+    return registros;
+  } catch (error) {
+    throw new Error('Erro ao carregar dados: ' + error.message);
+  }
+}

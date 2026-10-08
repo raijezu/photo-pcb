@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHOTO PCB</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,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">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <style>
+    body { background-color: #f4f6f9; }
+    .card-header { font-weight: 600; }
+    .img-preview { max-height: 180px; object-fit: contain; }
+    .table-img { width: 65px; height: 65px; object-fit: cover; border-radius: 6px; cursor: pointer; }
+    .nav-tabs .nav-link.active { font-weight: bold; }
+    #tabelaPcbs th, #tabelaPcbs td { white-space: nowrap; vertical-align: middle; }
+    #tabelaPcbs td.col-codigo { font-weight: 700; overflow-wrap: anywhere; white-space: normal; min-width: 90px; }
+    #tabelaPcbs th.col-num, #tabelaPcbs td.col-num { text-align: center; }
+    /* Cabeçalho fixo: a área da tabela rola e os títulos ficam parados no topo */
+    .lista-scroll { max-height: 70vh; overflow: auto; }
+    #tabelaPcbs thead th { position: sticky; top: 0; z-index: 2; background-color: #f8f9fa; box-shadow: 0 1px 0 #dee2e6; }
+    /* Botão de limpar dentro do campo de pesquisa */
+    .busca-wrap .form-control { border-top-left-radius: 0; border-bottom-left-radius: 0; margin-left: -1px; padding-right: 2.25rem; }
+    .btn-limpar { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); z-index: 5; border: 0; background: transparent; color: #6c757d; padding: 2px 6px; line-height: 1; border-radius: 50%; }
+    .btn-limpar:hover { color: #212529; background: #e9ecef; }
+    /* Campos: empilhados em celular/tablet, lado a lado só em tela larga */
+    .campos-linha { display: flex; flex-direction: column; gap: 1rem; }
+    .campo { width: 100%; }
+    @media (min-width: 1200px) {
+      .campos-linha { flex-direction: row; flex-wrap: wrap; }
+      .campo { width: 170px; }
+      .campo-codigo { width: 260px; }
+      .campo-fornecedor { width: 240px; }
+      .campo.campo-multi { width: 230px; }
+    }
+    /* Remove setas dos campos (number e datalist) */
+    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+    input::-webkit-calendar-picker-indicator { display: none !important; }
+    .somente-letras { text-transform: uppercase; }
+    #fotoViewport { height: 75vh; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: zoom-in; touch-action: none; user-select: none; }
+    #fotoViewport.ampliada { cursor: grab; }
+    #fotoViewport.arrastando { cursor: grabbing; }
+    #fotoGrande { max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: center center; will-change: transform; }
+    /* Leitor de código ao vivo */
+    .qr-area { position: relative; background: #000; border-radius: 8px; overflow: hidden; }
+    #qrVideo { width: 100%; display: block; max-height: 58vh; object-fit: contain; background: #000; }
+    .qr-mira { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 3px solid rgba(255,255,255,.9); border-radius: 12px; box-shadow: 0 0 0 2000px rgba(0,0,0,.35); pointer-events: none; }
+    .qr-mira.lido { border-color: #20c997; }
+    .qr-area { min-height: 220px; }
+    .qr-status { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; text-align: center; color: #fff; background: rgba(0,0,0,.7); font-size: .95rem; z-index: 3; }
+    .foto-box { border: 2px dashed #adb5bd; border-radius: 10px; background: #fff; }
+    #editorImgWrap { height: 48vh; min-height: 200px; background: #212529; }
+    #editorImg { display: block; max-width: 100%; }
+    /* Editor: foto e controles lado a lado quando há largura; empilhados em tela estreita */
+    #modalEditor .modal-dialog { max-width: min(1140px, 96vw); }
+    #modalEditor .modal-body { display: flex; flex-direction: column; gap: 12px; }
+    .editor-foto { flex: 1 1 0; min-width: 0; width: 100%; }
+    .editor-controles { flex: 0 0 auto; }
+    @media (min-width: 720px) {
+      #modalEditor .modal-body { flex-direction: row; align-items: flex-start; }
+      #editorImgWrap { height: calc(100vh - 170px); min-height: 230px; }
+      .editor-controles { flex: 0 0 330px; max-height: calc(100vh - 170px); overflow-y: auto; padding-right: 4px; }
+    }
+    /* Controles deslizantes bem visíveis: trilha escura, parte preenchida azul e marcador grande */
+    #modalEditor .form-range { height: 1.7rem; --pct: 50%; }
+    #modalEditor .form-range::-webkit-slider-runnable-track { height: .6rem; border-radius: 1rem; background: linear-gradient(to right, #0d6efd var(--pct), #adb5bd var(--pct)); }
+    #modalEditor .form-range::-moz-range-track { height: .6rem; border-radius: 1rem; background: #adb5bd; }
+    #modalEditor .form-range::-moz-range-progress { height: .6rem; border-radius: 1rem; background: #0d6efd; }
+    #modalEditor .form-range::-webkit-slider-thumb { box-sizing: border-box; width: 1.6rem; height: 1.6rem; margin-top: -.5rem; background: #0d6efd; border: 3px solid #fff; box-shadow: 0 0 0 1px #0a58ca, 0 2px 5px rgba(0,0,0,.45); }
+    #modalEditor .form-range::-moz-range-thumb { box-sizing: border-box; width: 1.6rem; height: 1.6rem; background: #0d6efd; border: 3px solid #fff; box-shadow: 0 0 0 1px #0a58ca, 0 2px 5px rgba(0,0,0,.45); }
+    #modalEditor .form-label { font-weight: 600; color: #212529; }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css" rel="stylesheet">
+</head>
+<body class="p-3 p-md-4">
+  <div class="container-fluid" style="max-width: 1100px;">
+    
+    <ul class="nav nav-tabs mb-4" id="abaTabs" role="tablist">
+      <li class="nav-item">
+        <button class="nav-link active" id="cadastro-tab" data-bs-toggle="tab" data-bs-target="#cadastro" type="button"><i class="bi bi-plus-circle me-1"></i> Cadastro de PCB</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" id="lista-tab" data-bs-toggle="tab" data-bs-target="#lista" type="button" onclick="carregarDados()"><i class="bi bi-list-ul me-1"></i> PCBs Cadastradas</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="abaTabsContent">
+      <!-- ABA 1: CADASTRO -->
+      <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-primary text-white">Novo Registro de Placa</div>
+          <div class="card-body">
+            <div id="alerta" class="alert d-none"></div>
+            <form id="formCadastro" onsubmit="enviarFormulario(event)">
+              <div class="row g-3">
+                <!-- PASSO 1: FOTO -->
+                <div class="col-12">
+                  <label class="form-label fw-semibold">Passo 1 — Foto da PCB</label>
+                  <div id="fotoVazia" class="foto-box text-center p-4">
+                    <i class="bi bi-camera fs-1 text-secondary d-block mb-2"></i>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+                      <button type="button" class="btn btn-primary btn-lg" onclick="tirarFoto()">
+                        <i class="bi bi-camera-fill me-1"></i> Tirar foto
+                      </button>
+                      <button type="button" class="btn btn-outline-secondary btn-lg" onclick="document.getElementById('inputArquivo').click()">
+                        <i class="bi bi-image me-1"></i> Escolher do arquivo
+                      </button>
+                    </div>
+                  </div>
+                  <div class="text-center" id="containerPrevia" style="display:none;">
+                    <img id="imgPrevia" class="img-thumbnail img-preview mb-2">
+                    <div class="d-flex justify-content-center gap-2">
+                      <button type="button" class="btn btn-sm btn-outline-primary" onclick="reabrirEditor()"><i class="bi bi-crop me-1"></i> Editar</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger" onclick="removerFoto()"><i class="bi bi-arrow-repeat me-1"></i> Trocar foto</button>
+                    </div>
+                  </div>
+                  <input type="file" id="inputCamera" accept="image/*" capture="environment" class="d-none" onchange="aoSelecionarFoto(event)">
+                  <input type="file" id="inputArquivo" accept="image/*" class="d-none" onchange="aoSelecionarFoto(event)">
+                </div>
+
+                <div class="col-12">
+                  <hr class="my-1">
+                  <div class="d-flex flex-wrap align-items-center gap-2">
+                    <label class="form-label fw-semibold mb-0">Passo 2 — Dados da placa</label>
+                    <button type="button" class="btn btn-sm btn-dark ms-sm-auto" onclick="abrirLeitorQR()">
+                      <i class="bi bi-qr-code-scan me-1"></i> Ler QR da etiqueta
+                    </button>
+                  </div>
+                  <div id="qrStatus" class="small mt-1"></div>
+                </div>
+                <div class="col-12">
+                  <div class="campos-linha">
+                    <div class="campo campo-codigo">
+                      <label class="form-label fw-semibold">Código(s)</label>
+                      <input type="text" id="codigo" class="form-control" inputmode="numeric" autocomplete="off" placeholder="Ex: 63397 / 63398" required>
+                    </div>
+                    <div class="campo">
+                      <label class="form-label fw-semibold">Peças por Painel</label>
+                      <input type="text" id="quantPainel" class="form-control somente-numeros" inputmode="numeric" autocomplete="off" placeholder="Ex: 4" required>
+                    </div>
+                    <div class="campo" id="campoPacote">
+                      <label class="form-label fw-semibold">Padrão por Pacote</label>
+                      <input type="text" id="quantPacote" class="form-control somente-numeros" inputmode="numeric" autocomplete="off" placeholder="Ex: 96" required>
+                      <div id="quantPorCodigo" class="d-none"></div>
+                      <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="qtdDiferentes" disabled onchange="atualizarQuantPorCodigo()">
+                        <label class="form-check-label small" for="qtdDiferentes">Quantidade diferente para cada código</label>
+                      </div>
+                    </div>
+                    <div class="campo campo-fornecedor">
+                      <label class="form-label fw-semibold">Fornecedor / Cliente</label>
+                      <input type="text" id="fornecedor" class="form-control somente-letras" list="listaFornecedores" autocomplete="off" autocapitalize="characters" placeholder="Ex: TOKAI RIKA" required>
+                      <datalist id="listaFornecedores"></datalist>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 text-end mt-4">
+                  <button type="submit" id="btnSalvar" class="btn btn-success px-4"><i class="bi bi-check-lg me-1"></i> Salvar Registro</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA 2: LISTA E PESQUISA -->
+      <div class="tab-pane fade" id="lista" role="tabpanel">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <span>Lista de Placas</span>
+            <button class="btn btn-sm btn-outline-light" onclick="carregarDados()"><i class="bi bi-arrow-clockwise"></i> Atualizar</button>
+          </div>
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-search"></i></span>
+                  <div class="busca-wrap position-relative flex-grow-1">
+                    <input type="text" id="filtroPesquisa" class="form-control" placeholder="Pesquisar por Código ou Fornecedor..." autocomplete="off" oninput="filtrarTabela()">
+                    <button type="button" id="btnLimparBusca" class="btn-limpar d-none" onclick="limparBusca()" title="Limpar pesquisa" aria-label="Limpar pesquisa"><i class="bi bi-x-lg"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive lista-scroll">
+              <table class="table table-hover align-middle" id="tabelaPcbs">
+                <thead class="table-light">
+                  <tr>
+                    <th>Foto</th>
+                    <th>Código</th>
+                    <th class="col-num">Peças/Painel</th>
+                    <th>Fornecedor/Cliente</th>
+                    <th class="col-num">Padrão/Pacote</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaCorpo">
+                  <tr><td colspan="5" class="text-center text-muted">Carregando dados...</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 mt-3">
+              <small class="text-muted" id="infoPaginacao"></small>
+              <nav><ul class="pagination pagination-sm mb-0 flex-wrap justify-content-center" id="paginacao"></ul></nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITOR DE FOTO -->
+  <div class="modal fade" id="modalEditor" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header py-2">
+          <h6 class="modal-title"><i class="bi bi-crop me-1"></i> Ajustar foto</h6>
+        </div>
+        <div class="modal-body">
+          <div class="editor-foto">
+            <div id="editorImgWrap"><img id="editorImg"></div>
+          </div>
+
+          <div class="editor-controles">
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <button type="button" class="btn btn-sm btn-primary" onclick="melhorarAutomatico()" title="Deixa a foto mais clara e nítida"><i class="bi bi-magic"></i> Melhorar automático</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="cropper.rotate(-90)"><i class="bi bi-arrow-counterclockwise"></i> Girar</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="cropper.rotate(90)"><i class="bi bi-arrow-clockwise"></i> Girar</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="cropper.zoom(0.1)" title="Aproximar"><i class="bi bi-zoom-in"></i></button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="cropper.zoom(-0.1)" title="Afastar"><i class="bi bi-zoom-out"></i></button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="resetarEditor()"><i class="bi bi-x-circle"></i> Restaurar</button>
+            </div>
+
+            <div class="mb-3">
+              <div class="form-label small mb-1 d-flex justify-content-between align-items-center">
+                <span>Prévia do resultado <span class="text-muted fw-normal">(centro, tamanho real)</span></span>
+                <span class="badge text-bg-secondary" id="infoResultado">—</span>
+              </div>
+              <canvas id="previaDetalhe" width="330" height="150" style="width:330px; max-width:100%; background:#212529; border-radius:6px; display:block;"></canvas>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small mb-0 d-flex justify-content-between"><span>Brilho</span> <span class="badge text-bg-primary" id="valBrilho">0</span></label>
+              <input type="range" class="form-range" id="ajBrilho" min="-100" max="100" value="0" oninput="atualizarFiltros()">
+            </div>
+            <div class="mb-2">
+              <label class="form-label small mb-0 d-flex justify-content-between"><span>Contraste</span> <span class="badge text-bg-primary" id="valContraste">0</span></label>
+              <input type="range" class="form-range" id="ajContraste" min="-100" max="100" value="0" oninput="atualizarFiltros()">
+            </div>
+            <div class="mb-2">
+              <label class="form-label small mb-0 d-flex justify-content-between"><span>Saturação</span> <span class="badge text-bg-primary" id="valSaturacao">0</span></label>
+              <input type="range" class="form-range" id="ajSaturacao" min="-100" max="100" value="0" oninput="atualizarFiltros()">
+            </div>
+            <div class="mb-2">
+              <label class="form-label small mb-0 d-flex justify-content-between"><span>Nitidez</span> <span class="badge text-bg-primary" id="valNitidez">0</span></label>
+              <input type="range" class="form-range" id="ajNitidez" min="0" max="100" value="0" oninput="atualizarFiltros()">
+            </div>
+            <div class="mb-1">
+              <label class="form-label small mb-0 d-flex justify-content-between"><span>Qualidade</span> <span class="badge text-bg-secondary"><span id="valQualidade">85</span>%</span></label>
+              <input type="range" class="form-range" id="ajQualidade" min="30" max="100" value="85" oninput="atualizarFiltros()">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer py-2">
+          <div id="editorErro" class="alert alert-danger small py-1 px-2 mb-0 me-auto d-none"></div>
+          <button type="button" class="btn btn-outline-secondary" id="btnCancelarEditor" onclick="cancelarEditor()">Cancelar</button>
+          <button type="button" class="btn btn-success" id="btnUsarFoto" onclick="aplicarEditor()"><i class="bi bi-check-lg me-1"></i> <span id="txtUsarFoto">Usar foto</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CÂMERA AO VIVO (computador) -->
+  <div class="modal fade" id="modalCam" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header py-2">
+          <h6 class="modal-title"><i class="bi bi-camera-fill me-1"></i> Tirar foto</h6>
+        </div>
+        <div class="modal-body text-center">
+          <video id="videoCam" class="w-100 bg-dark rounded" style="max-height:60vh;" autoplay playsinline muted></video>
+          <div id="camErro" class="alert alert-warning small d-none mt-2"></div>
+        </div>
+        <div class="modal-footer py-2">
+          <button type="button" class="btn btn-outline-secondary" onclick="fecharWebcam()">Cancelar</button>
+          <button type="button" class="btn btn-outline-primary d-none" id="btnCamArquivo" onclick="fecharWebcam(); document.getElementById('inputCamera').click()">Escolher do arquivo</button>
+          <button type="button" class="btn btn-primary" id="btnCapturar" onclick="capturarWebcam()"><i class="bi bi-camera-fill me-1"></i> Capturar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOTO AMPLIADA -->
+  <div class="modal fade" id="modalFoto" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-0">
+        <div class="modal-header border-0 py-2">
+          <h6 class="modal-title" id="fotoLegenda"></h6>
+          <a id="fotoAbrirAba" class="btn btn-sm btn-outline-light ms-auto me-2" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Abrir em nova aba</a>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-2">
+          <div id="fotoViewport">
+            <img id="fotoGrande" draggable="false">
+          </div>
+          <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+            <button type="button" class="btn btn-sm btn-outline-light" onclick="zoomFoto(1 / 1.4)" title="Diminuir"><i class="bi bi-zoom-out"></i></button>
+            <span class="small text-white-50" id="fotoZoomInfo">100%</span>
+            <button type="button" class="btn btn-sm btn-outline-light" onclick="zoomFoto(1.4)" title="Ampliar"><i class="bi bi-zoom-in"></i></button>
+            <button type="button" class="btn btn-sm btn-outline-light" onclick="resetarZoomFoto()" title="Voltar ao tamanho normal">100%</button>
+            <button type="button" class="btn btn-sm btn-warning ms-2" id="btnAjustarFoto" onclick="ajustarFotoRegistrada()"><i class="bi bi-sliders me-1"></i> <span>Ajustar foto</span></button>
+          </div>
+          <div id="fotoErro" class="alert alert-danger small py-1 px-2 mt-2 mb-0 d-none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEITOR DE QR -->
+  <div class="modal fade" id="modalQR" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header py-2">
+          <h6 class="modal-title"><i class="bi bi-qr-code-scan me-1"></i> Ler QR da etiqueta</h6>
+        </div>
+        <div class="modal-body">
+          <div class="qr-area">
+            <video id="qrVideo" playsinline muted autoplay></video>
+            <div class="qr-mira" id="qrMira"></div>
+            <div class="qr-status" id="qrStatusCam">
+              <div id="qrStatusTexto"><span class="spinner-border spinner-border-sm me-2"></span>Abrindo a câmera...</div>
+              <button type="button" class="btn btn-primary d-none" id="qrAbrirFoto" onclick="document.getElementById('inputFotoQR').click()"><i class="bi bi-camera-fill me-1"></i> Abrir câmera do celular</button>
+              <button type="button" class="btn btn-sm btn-light d-none" id="qrTentarDeNovo" onclick="tentarCameraAoVivo()"><i class="bi bi-arrow-repeat me-1"></i> Tentar câmera ao vivo</button>
+            </div>
+          </div>
+          <div class="text-end mt-1">
+            <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="qrTrocarCamera" onclick="trocarCameraQR()"><i class="bi bi-camera-reels me-1"></i> Trocar câmera</button>
+          </div>
+          <div id="leitorQRArquivo" class="d-none"></div>
+          <div class="small text-muted mt-2" id="qrDica">Aponte a câmera para o código da etiqueta, dentro do quadrado. A leitura é automática — não precisa tirar foto.</div>
+          <div id="qrControles" class="d-none mt-2">
+            <div id="qrZoomBox" class="d-none">
+              <label class="form-label small fw-semibold mb-0 d-flex justify-content-between" for="qrZoom"><span>Zoom (use se o código ficar pequeno ou sem foco)</span> <span class="badge text-bg-primary" id="qrZoomVal">1x</span></label>
+              <input type="range" class="form-range" id="qrZoom">
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-warning d-none" id="qrLanterna"><i class="bi bi-lightbulb me-1"></i> Lanterna</button>
+          </div>
+          <div id="qrErro" class="alert alert-warning small d-none mt-2"></div>
+          <div class="d-grid gap-2 mt-3">
+            <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('inputFotoQR').click()">
+              <i class="bi bi-camera me-1"></i> Ler pela câmera do celular (foto — o código é lido sozinho)
+            </button>
+            <input type="file" id="inputFotoQR" accept="image/*" capture="environment" class="d-none" onchange="lerQRDeFoto(event)">
+          </div>
+          <div class="input-group input-group-sm mt-3">
+            <input type="text" id="qrTextoManual" class="form-control" placeholder="Ou cole/digite o texto do QR (ou use leitor USB)" onkeydown="if(event.key==='Enter'){event.preventDefault();usarTextoManual();}">
+            <button type="button" class="btn btn-outline-secondary" onclick="usarTextoManual()">Usar</button>
+          </div>
+        </div>
+        <div class="modal-footer py-2">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <!-- Leitor de códigos rápido e preciso (zxing-cpp em WebAssembly). Só é usado quando o aparelho
+       não tem leitor nativo (iPhone, computador). Lê QR e Data Matrix em qualquer posição da imagem. -->
+  <script src="https://cdn.jsdelivr.net/npm/barcode-detector@3.2.2/dist/iife/polyfill.js"></script>
+  <script>
+    // ===== Comunicação com o servidor =====
+    // Dentro do Apps Script: usa google.script.run normalmente.
+    // Fora dele (página num site próprio, para a câmera ao vivo funcionar no iPhone): as MESMAS
+    // chamadas google.script.run.xxx() vão pela internet para a API (doPost do code.gs).
+    const API_URL = 'https://script.google.com/macros/s/AKfycbzY-R7JYPLGzxs7PDlI1xvMGxj5goOSWT7VStHPd_z_rZ3ECoJ6JxFUZlQFbkJQIM2ScA/exec'; // a URL do web app publicado, termina em /exec
+    const CHAVE_API = 'NykRSZf_XpRYdJGDgLl7Y7R_';                 // a mesma do code.gs
+
+    if (!(window.google && google.script && google.script.run)) {
+      window.google = { script: { get run() { return chamadaPelaApi(); } } };
+    }
+
+    function chamadaPelaApi() {
+      let aoSucesso = function() {};
+      let aoFalhar = function(e) { console.error(e); };
+      const base = {
+        withSuccessHandler: function(f) { aoSucesso = f; return chamada; },
+        withFailureHandler: function(f) { aoFalhar = f; return chamada; }
+      };
+      const chamada = new Proxy(base, {
+        get: function(alvo, nome) {
+          if (nome in alvo) return alvo[nome];
+          return function() {
+            if (API_URL.indexOf('/exec') < 0) {
+              aoFalhar(new Error('Configure a API_URL no index.html (URL do web app que termina em /exec).'));
+              return;
+            }
+            fetch(API_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // evita bloqueio de CORS
+              body: JSON.stringify({ acao: nome, args: Array.prototype.slice.call(arguments), chave: CHAVE_API })
+            })
+              .then(function(r) { return r.json(); })
+              .then(function(d) { if (d.ok) aoSucesso(d.resultado); else aoFalhar(new Error(d.erro)); })
+              .catch(function(e) { aoFalhar(new Error('Sem conexão com o servidor (' + e.message + ').')); });
+          };
+        }
+      });
+      return chamada;
+    }
+
+    let registrosGlobais = [];
+    let base64Imagem = '';      // foto final (recortada/ajustada) que será enviada
+    let fotoOriginal = '';      // foto como veio da câmera/arquivo, para reeditar
+    let cropper = null;
+    let modalEditor = null;
+
+    // ===== Tirar foto =====
+    // Celular/tablet: o input com capture="environment" abre direto o app da câmera (traseira).
+    // Computador: câmera ao vivo no navegador; se bloqueada, cai no seletor de arquivo.
+    function tirarFoto() {
+      const temToque = window.matchMedia('(pointer: coarse)').matches;
+      if (temToque || !(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
+        document.getElementById('inputCamera').click();
+      } else {
+        abrirWebcam();
+      }
+    }
+
+    let streamCam = null;
+    const elModalCam = document.getElementById('modalCam');
+    const modalCam = new bootstrap.Modal(elModalCam);
+
+    function abrirWebcam() {
+      document.getElementById('camErro').classList.add('d-none');
+      document.getElementById('btnCamArquivo').classList.add('d-none');
+      document.getElementById('btnCapturar').disabled = true;
+      modalCam.show();
+    }
+
+    elModalCam.addEventListener('shown.bs.modal', function() {
+      navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1080 } },
+        audio: false
+      }).then(function(stream) {
+        streamCam = stream;
+        document.getElementById('videoCam').srcObject = stream;
+        document.getElementById('btnCapturar').disabled = false;
+      }).catch(function(err) {
+        const erro = document.getElementById('camErro');
+        erro.innerText = (err && err.name === 'NotAllowedError')
+          ? 'Acesso à câmera bloqueado. Permita a câmera no navegador (ícone de cadeado ao lado do endereço) ou escolha um arquivo.'
+          : 'Não foi possível abrir a câmera neste aparelho. Escolha um arquivo.';
+        erro.classList.remove('d-none');
+        document.getElementById('btnCamArquivo').classList.remove('d-none');
+      });
+    });
+
+    elModalCam.addEventListener('hidden.bs.modal', function() {
+      pararWebcam();
+    });
+
+    function pararWebcam() {
+      if (streamCam) {
+        streamCam.getTracks().forEach(function(t) { t.stop(); });
+        streamCam = null;
+      }
+      document.getElementById('videoCam').srcObject = null;
+    }
+
+    function fecharWebcam() {
+      modalCam.hide();
+    }
+
+    function capturarWebcam() {
+      const video = document.getElementById('videoCam');
+      if (!video.videoWidth) return;
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d').drawImage(video, 0, 0);
+      fotoOriginal = canvas.toDataURL('image/jpeg', 0.92);
+      estadoCadastro = null;
+      // abre o editor só depois que a janela da câmera terminar de fechar
+      elModalCam.addEventListener('hidden.bs.modal', function abrir() {
+        elModalCam.removeEventListener('hidden.bs.modal', abrir);
+        abrirEditor();
+      });
+      modalCam.hide();
+    }
+
+    function aoSelecionarFoto(event) {
+      const input = event.target;
+      const file = input.files[0];
+      input.value = ''; // permite escolher o mesmo arquivo de novo
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        fotoOriginal = e.target.result;
+        estadoCadastro = null;
+        abrirEditor();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Ajustes + recorte da foto do cadastro, para o "Editar" reabrir do mesmo jeito
+    let estadoCadastro = null;
+
+    function reabrirEditor() {
+      if (fotoOriginal) abrirEditor(fotoOriginal, estadoCadastro);
+    }
+
+    // Quando preenchido, o editor está ajustando uma foto JÁ cadastrada: { linha, coluna }
+    let edicaoRegistro = null;
+
+    // ===== Editor de foto =====
+    // A foto é preparada UMA vez (em pé, no máximo LIMITE_BASE px no lado maior) e tudo sai dela:
+    //  - na tela: cópia reduzida (LIMITE_TELA) com os MESMOS ajustes da foto final;
+    //  - foto final: recorte em resolução cheia -> reduzida para LIMITE_SAIDA -> ajustes -> JPEG.
+    // (Antes o Cropper reduzia a foto inteira para 1600 px ANTES de recortar e depois ampliava o
+    //  recorte, por isso a foto salva ficava borrada/diferente do que se via no editor.)
+    const LIMITE_BASE = 4000;
+    const LIMITE_TELA = 2000;
+    const LIMITE_SAIDA = 1600;
+    let baseCanvas = null;   // foto em pé, sem ajustes
+    let telaCanvas = null;   // cópia reduzida usada só para mostrar no editor
+    let urlBase = null, urlTela = null;
+    let seloTela = 0, timerTela = null;
+
+    function carregarImagem(src) {
+      return new Promise(function(ok, falha) {
+        const img = new Image();
+        img.onload = function() { ok(img); };
+        img.onerror = function() { falha(new Error('Não foi possível abrir a imagem.')); };
+        img.src = src;
+      });
+    }
+
+    // Reduz com boa qualidade (em etapas de metade) até caber em "limite" px no lado maior
+    function redimensionar(fonte, limite) {
+      let w = fonte.naturalWidth || fonte.width, h = fonte.naturalHeight || fonte.height;
+      const escala = Math.min(1, limite / Math.max(w, h));
+      const alvoW = Math.max(1, Math.round(w * escala)), alvoH = Math.max(1, Math.round(h * escala));
+      let atual = fonte;
+      while (w / 2 >= alvoW && h / 2 >= alvoH) {
+        const c = document.createElement('canvas');
+        c.width = Math.round(w / 2); c.height = Math.round(h / 2);
+        const x = c.getContext('2d'); x.imageSmoothingQuality = 'high';
+        x.drawImage(atual, 0, 0, c.width, c.height);
+        atual = c; w = c.width; h = c.height;
+      }
+      const final = document.createElement('canvas');
+      final.width = alvoW; final.height = alvoH;
+      const ctx = final.getContext('2d'); ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(atual, 0, 0, alvoW, alvoH);
+      return final;
+    }
+
+    function canvasParaUrl(canvas, qualidade) {
+      return new Promise(function(ok) {
+        canvas.toBlob(function(blob) { ok(URL.createObjectURL(blob)); }, 'image/jpeg', qualidade);
+      });
+    }
+
+    function liberarUrls() {
+      [urlBase, urlTela].forEach(function(u) { if (u) URL.revokeObjectURL(u); });
+      urlBase = urlTela = null;
+    }
+
+    function lerAjustes() {
+      return {
+        b: +document.getElementById('ajBrilho').value,
+        c: +document.getElementById('ajContraste').value,
+        s: +document.getElementById('ajSaturacao').value,
+        n: +document.getElementById('ajNitidez').value,
+        q: +document.getElementById('ajQualidade').value
+      };
+    }
+
+    function definirAjustes(a) {
+      document.getElementById('ajBrilho').value = a.b;
+      document.getElementById('ajContraste').value = a.c;
+      document.getElementById('ajSaturacao').value = a.s;
+      document.getElementById('ajNitidez').value = a.n;
+      document.getElementById('ajQualidade').value = a.q;
+      atualizarFiltros();
+    }
+
+    function abrirEditor(origem, estado) {
+      origem = origem || fotoOriginal;
+      const img = document.getElementById('editorImg');
+      const el = document.getElementById('modalEditor');
+      const erro = document.getElementById('editorErro');
+      modalEditor = bootstrap.Modal.getOrCreateInstance(el);
+
+      if (cropper) { cropper.destroy(); cropper = null; }
+      liberarUrls();
+      baseCanvas = telaCanvas = null;
+      img.removeAttribute('src');
+      erro.classList.add('d-none');
+      document.getElementById('infoResultado').innerText = '—';
+      const telaPrevia = document.getElementById('previaDetalhe');
+      telaPrevia.getContext('2d').clearRect(0, 0, telaPrevia.width, telaPrevia.height);
+      document.getElementById('txtUsarFoto').innerText = edicaoRegistro ? 'Salvar foto' : 'Usar foto';
+      document.getElementById('btnUsarFoto').disabled = true; // libera quando a foto estiver pronta
+      if (estado && estado.ajustes) definirAjustes(estado.ajustes); else zerarAjustes();
+
+      const preparada = carregarImagem(origem).then(function(foto) {
+        baseCanvas = redimensionar(foto, LIMITE_BASE);   // o navegador já desenha a foto em pé
+        telaCanvas = redimensionar(baseCanvas, LIMITE_TELA);
+        return canvasParaUrl(baseCanvas, 0.95);
+      });
+      const aberta = new Promise(function(ok) {
+        if (el.classList.contains('show')) { ok(); return; }
+        el.addEventListener('shown.bs.modal', function iniciar() {
+          el.removeEventListener('shown.bs.modal', iniciar);
+          ok();
+        });
+      });
+      el.addEventListener('hidden.bs.modal', function limpar() {
+        el.removeEventListener('hidden.bs.modal', limpar);
+        if (cropper) { cropper.destroy(); cropper = null; }
+        liberarUrls();
+      });
+      modalEditor.show();
+
+      Promise.all([preparada, aberta]).then(function(r) {
+        urlBase = r[0];
+        img.src = urlBase;
+        cropper = new Cropper(img, {
+          viewMode: 1,
+          autoCropArea: 0.9,
+          background: false,
+          responsive: true,
+          checkOrientation: false, // a foto já foi colocada em pé ao preparar
+          ready: function() {
+            if (estado && estado.dados) cropper.setData(estado.dados);
+            document.getElementById('btnUsarFoto').disabled = false;
+            atualizarTela();
+          },
+          crop: agendarPrevia
+        });
+      }).catch(function(e) {
+        erro.innerText = e.message;
+        erro.classList.remove('d-none');
+      });
+    }
+
+    function zerarAjustes() {
+      ['ajBrilho', 'ajContraste', 'ajSaturacao'].forEach(id => document.getElementById(id).value = 0);
+      document.getElementById('ajNitidez').value = 0;
+      document.getElementById('ajQualidade').value = 85;
+      atualizarFiltros();
+    }
+
+    // Atalho: deixa a foto mais clara, com mais contraste e nítida
+    function melhorarAutomatico() {
+      document.getElementById('ajBrilho').value = 12;
+      document.getElementById('ajContraste').value = 20;
+      document.getElementById('ajSaturacao').value = 8;
+      document.getElementById('ajNitidez').value = 55;
+      atualizarFiltros();
+    }
+
+    function resetarEditor() {
+      if (cropper) cropper.reset();
+      zerarAjustes();
+    }
+
+    function atualizarFiltros() {
+      const a = lerAjustes();
+      document.getElementById('valBrilho').innerText = a.b;
+      document.getElementById('valContraste').innerText = a.c;
+      document.getElementById('valSaturacao').innerText = a.s;
+      document.getElementById('valNitidez').innerText = a.n;
+      document.getElementById('valQualidade').innerText = a.q;
+
+      // parte preenchida da trilha de cada controle
+      document.querySelectorAll('#modalEditor input[type=range]').forEach(function(r) {
+        const pct = (r.value - r.min) / (r.max - r.min) * 100;
+        r.style.setProperty('--pct', pct + '%');
+      });
+
+      if (cropper) agendarTela();
+    }
+
+    // Mostra no editor a foto com os ajustes de verdade (mesma conta da foto final)
+    function agendarTela() {
+      clearTimeout(timerTela);
+      timerTela = setTimeout(atualizarTela, 120);
+    }
+
+    function atualizarTela() {
+      if (!cropper || !telaCanvas) return;
+      const a = lerAjustes();
+      const selo = ++seloTela;
+      const copia = document.createElement('canvas');
+      copia.width = telaCanvas.width;
+      copia.height = telaCanvas.height;
+      copia.getContext('2d').drawImage(telaCanvas, 0, 0);
+      processarCanvas(copia, a.b, a.c, a.s, a.n);
+      canvasParaUrl(copia, 0.92).then(function(url) {
+        if (selo !== seloTela || !cropper) { URL.revokeObjectURL(url); return; }
+        const antiga = urlTela;
+        urlTela = url;
+        // troca só a imagem mostrada; o recorte final continua saindo da foto em resolução cheia
+        [cropper.image, cropper.viewBoxImage].forEach(function(im) { if (im) im.src = url; });
+        if (antiga) setTimeout(function() { URL.revokeObjectURL(antiga); }, 1500);
+      });
+      agendarPrevia();
+    }
+
+    function cancelarEditor() {
+      edicaoRegistro = null;
+      modalEditor.hide();
+    }
+
+    // Conta de cores ÚNICA (tela e foto final usam a mesma):
+    // saída = m * entrada + off   (valores de 0 a 255; o resultado é limitado a 0..255)
+    function coeficientesCor(b, c, s) {
+      const add = b * 2.55;
+      const cc = c * 2.55;
+      const fc = (259 * (cc + 255)) / (255 * (259 - cc));   // contraste
+      const fs = 1 + s / 100;                                // saturação
+      const pr = [0.299, 0.587, 0.114];
+      const m = [0, 1, 2].map(function(i) {
+        return [0, 1, 2].map(function(j) {
+          return fc * ((i === j ? fs : 0) + (1 - fs) * pr[j]);
+        });
+      });
+      return { m: m, off: fc * (add - 128) + 128 };
+    }
+
+    function fatorNitidez(n) { return n / 100 * 1.2; }
+
+    // Aplica brilho, contraste, saturação e nitidez no canvas
+    function processarCanvas(canvas, b, c, s, nit) {
+      if (b || c || s) {
+        const ctx = canvas.getContext('2d');
+        const dados = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const px = dados.data;
+        const co = coeficientesCor(b, c, s);
+        const m = co.m, off = co.off;
+        const lim = v => v < 0 ? 0 : v > 255 ? 255 : v;
+        for (let i = 0; i < px.length; i += 4) {
+          const r = px[i], g = px[i + 1], bl = px[i + 2];
+          px[i]     = lim(m[0][0] * r + m[0][1] * g + m[0][2] * bl + off);
+          px[i + 1] = lim(m[1][0] * r + m[1][1] * g + m[1][2] * bl + off);
+          px[i + 2] = lim(m[2][0] * r + m[2][1] * g + m[2][2] * bl + off);
+        }
+        ctx.putImageData(dados, 0, 0);
+      }
+      if (nit) aplicarNitidez(canvas, fatorNitidez(nit));
+    }
+
+    // Nitidez: realce 3x3 (a = intensidade); as bordas da imagem ficam como estão
+    function aplicarNitidez(canvas, a) {
+      const w = canvas.width, h = canvas.height;
+      const ctx = canvas.getContext('2d');
+      const origem = ctx.getImageData(0, 0, w, h);
+      const destino = ctx.createImageData(w, h);
+      const s = origem.data, d = destino.data;
+      const lim = v => v < 0 ? 0 : v > 255 ? 255 : v;
+      d.set(s);
+      for (let y = 1; y < h - 1; y++) {
+        for (let x = 1; x < w - 1; x++) {
+          const i = (y * w + x) * 4;
+          for (let c = 0; c < 3; c++) {
+            const centro = s[i + c];
+            const vizinhos = s[i - 4 + c] + s[i + 4 + c] + s[i - w * 4 + c] + s[i + w * 4 + c];
+            d[i + c] = lim(centro + a * (4 * centro - vizinhos));
+          }
+        }
+      }
+      ctx.putImageData(destino, 0, 0);
+    }
+
+    // Gera a foto final. É o MESMO caminho da "Prévia do resultado" e do salvamento.
+    function gerarResultado() {
+      if (!cropper || !baseCanvas) return null;
+      const a = lerAjustes();
+      const exibida = cropper.image;
+      let recorte;
+      cropper.image = baseCanvas; // recorta da foto em resolução cheia (sem reduzir antes)
+      try {
+        recorte = cropper.getCroppedCanvas({ fillColor: '#fff', imageSmoothingQuality: 'high' });
+      } finally {
+        cropper.image = exibida;
+      }
+      if (!recorte) return null;
+      const saida = redimensionar(recorte, LIMITE_SAIDA);
+      processarCanvas(saida, a.b, a.c, a.s, a.n);
+      return { canvas: saida, dataUrl: saida.toDataURL('image/jpeg', a.q / 100) };
+    }
+
+    // Prévia do resultado: centro da foto final em tamanho real (100%) + tamanho do arquivo
+    let timerPrevia = null;
+    let seloPrevia = 0;
+    function agendarPrevia() {
+      clearTimeout(timerPrevia);
+      timerPrevia = setTimeout(atualizarPrevia, 250);
+    }
+
+    function atualizarPrevia() {
+      const gerado = gerarResultado();
+      const tela = document.getElementById('previaDetalhe');
+      if (!gerado || !tela) return;
+      const selo = ++seloPrevia;
+      const img = new Image();
+      img.onload = function() {
+        if (selo !== seloPrevia) return; // chegou uma prévia mais nova
+        const ctx = tela.getContext('2d');
+        ctx.fillStyle = '#212529';
+        ctx.fillRect(0, 0, tela.width, tela.height);
+        const sx = Math.max(0, Math.round((img.width - tela.width) / 2));
+        const sy = Math.max(0, Math.round((img.height - tela.height) / 2));
+        const lw = Math.min(tela.width, img.width), lh = Math.min(tela.height, img.height);
+        ctx.drawImage(img, sx, sy, lw, lh, Math.round((tela.width - lw) / 2), Math.round((tela.height - lh) / 2), lw, lh);
+        const kb = Math.round(gerado.dataUrl.length * 0.75 / 1024);
+        document.getElementById('infoResultado').innerText = kb + ' KB · ' + img.width + '×' + img.height;
+      };
+      img.src = gerado.dataUrl;
+    }
+
+    function aplicarEditor() {
+      if (!cropper) return;
+      const gerado = gerarResultado();
+      if (!gerado) return;
+      const resultado = gerado.dataUrl;
+
+      // ajustando uma foto já cadastrada: envia para o Drive e atualiza a planilha
+      if (edicaoRegistro) {
+        salvarFotoEditada(resultado);
+        return;
+      }
+
+      estadoCadastro = { ajustes: lerAjustes(), dados: cropper.getData() };
+      base64Imagem = resultado;
+      document.getElementById('imgPrevia').src = base64Imagem;
+      document.getElementById('fotoVazia').style.display = 'none';
+      document.getElementById('containerPrevia').style.display = 'block';
+      modalEditor.hide();
+    }
+
+    // ===== Filtros dos campos =====
+    document.querySelectorAll('.somente-numeros').forEach(function(campo) {
+      campo.addEventListener('input', function() {
+        campo.value = campo.value.replace(/\D/g, '');
+      });
+    });
+
+    // Código(s): vários códigos no mesmo pacote. A cada 5 dígitos o sistema coloca " / "
+    // sozinho ao continuar digitando (ex.: 48683 / 48682). Qualquer não-número (espaço, / , ; -)
+    // encerra um código com menos de 5 dígitos.
+    const TAM_CODIGO = 5;
+    function formatarCodigos(bruto, manterSeparadorFinal) {
+      const grupos = [];
+      bruto.split(/[^0-9]+/).forEach(function(parte) {
+        for (let i = 0; i < parte.length; i += TAM_CODIGO) grupos.push(parte.slice(i, i + TAM_CODIGO));
+      });
+      let texto = grupos.join(' / ');
+      if (manterSeparadorFinal && grupos.length && /[^0-9]$/.test(bruto)) texto += ' / ';
+      return texto;
+    }
+
+    const campoCodigo = document.getElementById('codigo');
+    campoCodigo.addEventListener('input', function(e) {
+      const apagando = e.inputType && e.inputType.indexOf('delete') === 0;
+      const antes = campoCodigo.value.slice(0, campoCodigo.selectionStart);
+      const digitosAntes = antes.replace(/\D/g, '').length;
+
+      // dígito digitado logo após um código completo ganha o " / " automático
+      campoCodigo.value = formatarCodigos(campoCodigo.value, !apagando);
+
+      // devolve o cursor para o mesmo ponto (contado em dígitos)
+      const v = campoCodigo.value;
+      let pos = v.length, vistos = 0;
+      if (digitosAntes < v.replace(/\D/g, '').length) {
+        pos = 0;
+        while (pos < v.length && vistos < digitosAntes) { if (/\d/.test(v[pos])) vistos++; pos++; }
+      }
+      campoCodigo.setSelectionRange(pos, pos);
+      atualizarQuantPorCodigo();
+    });
+
+    // Quantidade por código: quando marcado, um campo de quantidade para cada código digitado
+    const quantGuardadas = {};
+
+    function codigosDigitados() {
+      return formatarCodigos(document.getElementById('codigo').value, false).split(' / ').filter(Boolean);
+    }
+
+    function atualizarQuantPorCodigo() {
+      const codigos = codigosDigitados();
+      const chk = document.getElementById('qtdDiferentes');
+      const campoUnico = document.getElementById('quantPacote');
+      const caixa = document.getElementById('quantPorCodigo');
+
+      // só faz sentido com 2 ou mais códigos
+      chk.disabled = codigos.length < 2;
+      if (codigos.length < 2) chk.checked = false;
+      const varias = chk.checked;
+
+      campoUnico.classList.toggle('d-none', varias);
+      campoUnico.required = !varias;
+      caixa.classList.toggle('d-none', !varias);
+      document.getElementById('campoPacote').classList.toggle('campo-multi', varias);
+
+      if (varias) {
+        caixa.querySelectorAll('input[data-codigo]').forEach(function(i) { quantGuardadas[i.dataset.codigo] = i.value; });
+        caixa.innerHTML = codigos.map(function(c) {
+          return '<div class="input-group input-group-sm mb-1">' +
+            '<span class="input-group-text" style="min-width:72px">' + c + '</span>' +
+            '<input type="text" inputmode="numeric" autocomplete="off" class="form-control" data-codigo="' + c + '" ' +
+            'value="' + (quantGuardadas[c] || '') + '" placeholder="Qtd" required></div>';
+        }).join('');
+      }
+    }
+
+    document.getElementById('quantPorCodigo').addEventListener('input', function(e) {
+      if (e.target.matches('input[data-codigo]')) e.target.value = e.target.value.replace(/\D/g, '');
+    });
+
+    // Valor gravado na planilha: "5000" ou, com quantidades diferentes, "5000 / 3000" (mesma ordem dos códigos)
+    function valorPacote() {
+      if (!document.getElementById('qtdDiferentes').checked) return document.getElementById('quantPacote').value;
+      return Array.from(document.querySelectorAll('#quantPorCodigo input[data-codigo]'))
+        .map(function(i) { return i.value; }).join(' / ');
+    }
+
+    // Fornecedor: só letras (com acento) e espaço, sempre em maiúsculas
+    const campoFornecedor = document.getElementById('fornecedor');
+    campoFornecedor.addEventListener('input', function() {
+      const pos = campoFornecedor.selectionStart;
+      const antes = campoFornecedor.value.length;
+      campoFornecedor.value = campoFornecedor.value.toUpperCase().replace(/[^A-ZÀ-Ý ]/g, '');
+      const novaPos = Math.max(0, pos - (antes - campoFornecedor.value.length));
+      campoFornecedor.setSelectionRange(novaPos, novaPos);
+    });
+
+    // Sugestões: fornecedores já cadastrados na planilha
+    function atualizarFornecedores(lista) {
+      const nomes = new Set();
+      (lista || []).forEach(function(item) {
+        const nome = (item.fornecedor || '').toString().trim().toUpperCase();
+        if (nome) nomes.add(nome);
+      });
+      document.getElementById('listaFornecedores').innerHTML =
+        Array.from(nomes).sort().map(function(n) { return '<option value="' + n.replace(/"/g, '&quot;') + '">'; }).join('');
+    }
+
+    function carregarFornecedores() {
+      google.script.run
+        .withSuccessHandler(function(dados) {
+          registrosGlobais = dados;
+          atualizarFornecedores(dados);
+        })
+        .obterRegistros();
+    }
+    carregarFornecedores();
+
+    // ===== Leitura do QR da etiqueta =====
+    // Formato: C47142Q5000.000U0013593571 -> C = código, Q = quantidade por pacote
+    function parsearEtiqueta(texto) {
+      const m = /C(\d+)Q(\d+(?:[.,]\d+)?)/i.exec((texto || '').trim());
+      if (!m) return null;
+      return { codigo: m[1], quantPacote: Math.round(parseFloat(m[2].replace(',', '.'))) };
+    }
+
+    // Leitor ao vivo PRÓPRIO: lê o centro do vídeo na resolução real da câmera.
+    // (A biblioteca html5-qrcode copiava a imagem no tamanho que aparece na tela — 200-300 px no
+    //  celular —, aí o código pequeno da etiqueta virava poucos pixels e não era lido.)
+    // Decodifica com o leitor nativo do aparelho (BarcodeDetector) quando existe; senão, com o ZXing
+    // embutido na html5-qrcode. Lê QR Code e Data Matrix.
+    const elModalQR = document.getElementById('modalQR');
+    const modalQR = new bootstrap.Modal(elModalQR);
+    const videoQR = document.getElementById('qrVideo');
+    let streamQR = null;
+    let lendoQR = false;
+    let detectorNativo = null;
+    let leitorArquivo = null;
+    let cicloQR = 0;
+
+    function criarLeitor(idElemento) {
+      const F = Html5QrcodeSupportedFormats;
+      return new Html5Qrcode(idElemento || 'leitorQRArquivo', {
+        verbose: false,
+        formatsToSupport: [F.QR_CODE, F.DATA_MATRIX],
+        experimentalFeatures: { useBarCodeDetectorIfSupported: true }
+      });
+    }
+
+    let preparando = null;
+    function usarLeitorAntigo() {
+      detectorNativo = false;
+      if (!leitorArquivo) leitorArquivo = criarLeitor();
+    }
+
+    function prepararDecodificador() {
+      if (detectorNativo !== null || leitorArquivo) return Promise.resolve();
+      if (preparando) return preparando;
+      if (!('BarcodeDetector' in window && BarcodeDetector.getSupportedFormats)) {
+        usarLeitorAntigo();
+        return Promise.resolve();
+      }
+      preparando = BarcodeDetector.getSupportedFormats().then(function(fmts) {
+        const usar = ['qr_code', 'data_matrix'].filter(function(f) { return fmts.indexOf(f) >= 0; });
+        if (!usar.length) { usarLeitorAntigo(); return; }
+        const detector = new BarcodeDetector({ formats: usar });
+        // primeira leitura de teste: carrega o WebAssembly agora (e confirma que funciona aqui)
+        const teste = document.createElement('canvas'); teste.width = teste.height = 16;
+        return detector.detect(teste).then(function() { detectorNativo = detector; });
+      }).catch(function() { usarLeitorAntigo(); })
+        .then(function() { preparando = null; });
+      return preparando;
+    }
+
+    // Tenta ler um canvas; devolve o texto ou null
+    function decodificar(canvas) {
+      if (detectorNativo) {
+        return detectorNativo.detect(canvas)
+          .then(function(r) { return r.length ? r[0].rawValue : null; })
+          .catch(function() { usarLeitorAntigo(); return decodificar(canvas); });
+      }
+      return new Promise(function(ok) {
+        canvas.toBlob(function(blob) {
+          const arq = new File([blob], 'quadro.jpg', { type: 'image/jpeg' });
+          leitorArquivo.scanFileV2(arq, false)
+            .then(function(r) { ok(r && r.decodedText ? r.decodedText : null); })
+            .catch(function() { ok(null); });
+        }, 'image/jpeg', 0.95);
+      });
+    }
+
+    // No iPhone (e em alguns navegadores) o Apps Script roda dentro de um quadro do Google que
+    // não tem permissão de câmera ao vivo. Quando isso acontece uma vez, o aparelho passa a usar
+    // a câmera do próprio celular: "Ler QR" abre a câmera, tira a foto e o código é lido sozinho.
+    const CHAVE_SO_FOTO = 'photoPcbLeituraPorFoto';
+    function usarModoFoto() { try { return localStorage.getItem(CHAVE_SO_FOTO) === '1'; } catch (e) { return false; } }
+    function marcarModoFoto(sim) { try { if (sim) localStorage.setItem(CHAVE_SO_FOTO, '1'); else localStorage.removeItem(CHAVE_SO_FOTO); } catch (e) {} }
+
+    function tentarCameraAoVivo() {
+      marcarModoFoto(false);
+      reabrirCameraQR();
+    }
+
+    setTimeout(function() { prepararDecodificador(); }, 1500);
+
+    function abrirLeitorQR() {
+      if (usarModoFoto()) {
+        // o toque no botão permite abrir a câmera do celular direto, sem a janela
+        document.getElementById('inputFotoQR').click();
+        return;
+      }
+      statusCamera('Abrindo a câmera...', false, true);
+      document.getElementById('qrErro').classList.add('d-none');
+      document.getElementById('qrTextoManual').value = '';
+      modalQR.show();
+    }
+
+    function ajustarMira() {
+      const lado = Math.round(Math.min(videoQR.clientWidth, videoQR.clientHeight) * 0.75);
+      const mira = document.getElementById('qrMira');
+      mira.style.width = lado + 'px';
+      mira.style.height = lado + 'px';
+      mira.classList.remove('lido');
+    }
+
+    // ----- Abertura da câmera (robusta) -----
+    // Tenta da configuração mais alta para a mais simples. Se a câmera abrir mas não mandar imagem
+    // (tela preta), passa para a próxima. Mostra na tela o que está acontecendo.
+    const CONFIGS_CAMERA = [
+      { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1080 } },
+      { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
+      { facingMode: 'environment' },
+      true
+    ];
+    let sessaoQR = 0;            // invalida tentativas antigas quando a janela fecha/reabre
+    let cameraEscolhida = null;  // deviceId escolhido em "Trocar câmera"
+    let camerasDisponiveis = [];
+
+    function statusCamera(texto, comBotao, carregando, comFoto) {
+      const caixa = document.getElementById('qrStatusCam');
+      if (!texto) { caixa.classList.add('d-none'); return; }
+      caixa.classList.remove('d-none');
+      document.getElementById('qrStatusTexto').innerHTML =
+        (carregando ? '<span class="spinner-border spinner-border-sm me-2"></span>' : '') + texto;
+      document.getElementById('qrTentarDeNovo').classList.toggle('d-none', !comBotao);
+      document.getElementById('qrAbrirFoto').classList.toggle('d-none', !comFoto);
+    }
+
+    function pararStreamQR() {
+      if (streamQR) { streamQR.getTracks().forEach(function(t) { t.stop(); }); streamQR = null; }
+      videoQR.srcObject = null;
+    }
+
+    // Espera a câmera mandar imagem de verdade (não preta) por até "ms"
+    function esperarImagem(sessao, ms) {
+      const amostra = document.createElement('canvas');
+      amostra.width = 32; amostra.height = 32;
+      const ctx = amostra.getContext('2d');
+      const inicio = Date.now();
+      return new Promise(function(ok) {
+        (function checar() {
+          if (sessao !== sessaoQR) { ok(false); return; }
+          if (videoQR.videoWidth > 0 && videoQR.readyState >= 2) {
+            try {
+              ctx.drawImage(videoQR, 0, 0, 32, 32);
+              const d = ctx.getImageData(0, 0, 32, 32).data;
+              let max = 0;
+              for (let i = 0; i < d.length; i += 4) max = Math.max(max, d[i], d[i + 1], d[i + 2]);
+              if (max > 10) { ok(true); return; }
+            } catch (e) {}
+          }
+          if (Date.now() - inicio > ms) { ok(false); return; }
+          setTimeout(checar, 250);
+        })();
+      });
+    }
+
+    function nomeErroCamera(err) {
+      const n = (err && err.name) || '';
+      if (n === 'NotAllowedError' || n === 'SecurityError' || n === 'PermissionDeniedError')
+        return 'O acesso à câmera está bloqueado. Toque no cadeado ao lado do endereço do site, permita a câmera e depois toque em "Tentar de novo".';
+      if (n === 'NotReadableError' || n === 'TrackStartError')
+        return 'A câmera está sendo usada por outro aplicativo ou aba. Feche o outro uso e toque em "Tentar de novo".';
+      if (n === 'NotFoundError' || n === 'DevicesNotFoundError')
+        return 'Nenhuma câmera foi encontrada neste aparelho.';
+      return 'Não foi possível abrir a câmera' + (n ? ' (' + n + ')' : '') + '.';
+    }
+
+    function abrirCameraQR(sessao, indice) {
+      const video = cameraEscolhida
+        ? { deviceId: { exact: cameraEscolhida }, width: { ideal: 1920 }, height: { ideal: 1080 } }
+        : CONFIGS_CAMERA[indice];
+      statusCamera(indice === 0 ? 'Abrindo a câmera...' : 'Ajustando a câmera (tentativa ' + (indice + 1) + ' de ' + CONFIGS_CAMERA.length + ')...', false, true);
+
+      return navigator.mediaDevices.getUserMedia({ audio: false, video: video }).then(function(stream) {
+        if (sessao !== sessaoQR) { stream.getTracks().forEach(function(t) { t.stop(); }); return; }
+        streamQR = stream;
+        videoQR.muted = true;
+        videoQR.setAttribute('playsinline', '');
+        videoQR.srcObject = stream;
+        videoQR.onloadedmetadata = function() { ajustarMira(); };
+        const tocar = videoQR.play();
+        if (tocar && tocar.catch) tocar.catch(function() {});
+
+        return esperarImagem(sessao, 3500).then(function(temImagem) {
+          if (sessao !== sessaoQR) return;
+          if (!temImagem) {
+            pararStreamQR();
+            if (!cameraEscolhida && indice + 1 < CONFIGS_CAMERA.length) return abrirCameraQR(sessao, indice + 1);
+            statusCamera('A câmera ao vivo não está mandando imagem. Use a câmera do celular: tire a foto da etiqueta e o código é lido automaticamente.', true, false, true);
+            return;
+          }
+          // câmera funcionando
+          statusCamera('');
+          inicioLeituraQR = Date.now();
+          dicaQR(false);
+          ajustarMira();
+          configurarZoomLanterna(stream.getVideoTracks()[0]);
+          listarCameras();
+          lendoQR = true;
+          setTimeout(lerQuadro, 200);
+        });
+      }).catch(function(err) {
+        if (sessao !== sessaoQR) return;
+        const n = (err && err.name) || '';
+        const bloqueio = n === 'NotAllowedError' || n === 'SecurityError' || n === 'PermissionDeniedError' || n === 'NotFoundError';
+        if (!bloqueio && !cameraEscolhida && indice + 1 < CONFIGS_CAMERA.length) return abrirCameraQR(sessao, indice + 1);
+        if (n === 'NotAllowedError' || n === 'SecurityError' || n === 'PermissionDeniedError') {
+          marcarModoFoto(true);
+          statusCamera('Neste aparelho a câmera ao vivo é bloqueada dentro do Google. Use a câmera do celular: tire a foto da etiqueta e o código é lido automaticamente.', true, false, true);
+          return;
+        }
+        statusCamera(nomeErroCamera(err), true);
+      });
+    }
+
+    // Mostra "Trocar câmera" quando o aparelho tem mais de uma
+    function listarCameras() {
+      if (!navigator.mediaDevices.enumerateDevices) return;
+      navigator.mediaDevices.enumerateDevices().then(function(lista) {
+        camerasDisponiveis = lista.filter(function(d) { return d.kind === 'videoinput'; });
+        document.getElementById('qrTrocarCamera').classList.toggle('d-none', camerasDisponiveis.length < 2);
+      }).catch(function() {});
+    }
+
+    function trocarCameraQR() {
+      if (camerasDisponiveis.length < 2) return;
+      const atual = streamQR && streamQR.getVideoTracks()[0] && streamQR.getVideoTracks()[0].getSettings().deviceId;
+      let i = camerasDisponiveis.findIndex(function(d) { return d.deviceId === (cameraEscolhida || atual); });
+      cameraEscolhida = camerasDisponiveis[(i + 1) % camerasDisponiveis.length].deviceId;
+      reabrirCameraQR();
+    }
+
+    function reabrirCameraQR() {
+      lendoQR = false;
+      pararStreamQR();
+      const sessao = ++sessaoQR;
+      prepararDecodificador().then(function() { return abrirCameraQR(sessao, 0); });
+    }
+
+    elModalQR.addEventListener('shown.bs.modal', function() {
+      if (usarModoFoto()) {
+        statusCamera('Use a câmera do celular: tire a foto da etiqueta e o código é lido automaticamente.', true, false, true);
+        return;
+      }
+      if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
+        statusCamera('Este navegador não abre a câmera ao vivo. Use "Tirar foto do código" abaixo.', false);
+        return;
+      }
+      reabrirCameraQR();
+    });
+
+    // ----- Achar o código na imagem -----
+    // O leitor de Data Matrix (ZXing) só lê quando o código está QUASE NO CENTRO do recorte.
+    // Então procuramos áreas quadradas cheias de bordas finas (horizontais e verticais), que é a
+    // "cara" de um QR/Data Matrix, e recortamos centrado em cada uma.
+    function candidatosCodigo(fonte, W, H, quantos) {
+      const s = Math.min(1, 480 / Math.max(W, H));
+      const w = Math.max(8, Math.round(W * s)), h = Math.max(8, Math.round(H * s));
+      const c = document.createElement('canvas'); c.width = w; c.height = h;
+      const ctx = c.getContext('2d');
+      ctx.drawImage(fonte, 0, 0, w, h);
+      const d = ctx.getImageData(0, 0, w, h).data;
+      const g = new Float32Array(w * h);
+      for (let i = 0, j = 0; j < g.length; i += 4, j++) g[j] = d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114;
+      const L = w + 1;
+      const IH = new Float64Array(L * (h + 1)), IV = new Float64Array(L * (h + 1));
+      for (let y = 0; y < h; y++) {
+        let sh = 0, sv = 0;
+        for (let x = 0; x < w; x++) {
+          const k = y * w + x;
+          if (x + 1 < w && Math.abs(g[k + 1] - g[k]) > 35) sh++;
+          if (y + 1 < h && Math.abs(g[k + w] - g[k]) > 35) sv++;
+          const o = (y + 1) * L + (x + 1);
+          IH[o] = IH[o - L] + sh;
+          IV[o] = IV[o - L] + sv;
+        }
+      }
+      function soma(I, x0, y0, x1, y1) { return I[y1 * L + x1] - I[y0 * L + x1] - I[y1 * L + x0] + I[y0 * L + x0]; }
+      const achados = [];
+      [10, 14, 20, 28, 40, 56, 80, 110, 150].forEach(function(ws) {
+        if (ws >= Math.min(w, h)) return;
+        const area = ws * ws, passo = Math.max(1, Math.round(ws / 8));
+        for (let y0 = 0; y0 + ws <= h; y0 += passo) {
+          for (let x0 = 0; x0 + ws <= w; x0 += passo) {
+            const dens = Math.min(soma(IH, x0, y0, x0 + ws, y0 + ws), soma(IV, x0, y0, x0 + ws, y0 + ws)) / area;
+            // janela do tamanho do código ganha (menor: mesma densidade; maior: densidade cai)
+            if (dens > 0.12) achados.push({ x: x0 + ws / 2, y: y0 + ws / 2, ws: ws, sc: dens * Math.sqrt(ws) });
+          }
+        }
+      });
+      achados.sort(function(a, b) { return b.sc - a.sc; });
+      const escolhidos = [];
+      for (let i = 0; i < achados.length && escolhidos.length < quantos; i++) {
+        const a = achados[i];
+        if (escolhidos.some(function(e) { return Math.hypot(e.x - a.x, e.y - a.y) < Math.max(e.ws, a.ws) * 0.75; })) continue;
+        escolhidos.push(a);
+      }
+      return escolhidos.map(function(a) { return { x: a.x / s, y: a.y / s, lado: a.ws / s }; });
+    }
+
+    // Recorte quadrado centrado em (cx, cy); o que passar da borda da imagem fica branco
+    function recortarCentrado(fonte, W, H, cx, cy, lado, saidaMax) {
+      const esc = Math.min(1, saidaMax / lado);
+      const c = document.createElement('canvas');
+      c.width = c.height = Math.max(1, Math.round(lado * esc));
+      const x = c.getContext('2d');
+      x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height);
+      x.imageSmoothingQuality = 'high';
+      const sx0 = cx - lado / 2, sy0 = cy - lado / 2;
+      const sx = Math.max(0, sx0), sy = Math.max(0, sy0);
+      const sw = Math.min(W, sx0 + lado) - sx, sh = Math.min(H, sy0 + lado) - sy;
+      if (sw > 0 && sh > 0) x.drawImage(fonte, sx, sy, sw, sh, (sx - sx0) * esc, (sy - sy0) * esc, sw * esc, sh * esc);
+      return c;
+    }
+
+    // Recorte retangular do centro (fração da imagem), reduzido até "saidaMax"
+    function recortarCentro(fonte, W, H, fracao, saidaMax) {
+      const lw = Math.round(W * fracao), lh = Math.round(H * fracao);
+      const esc = Math.min(1, saidaMax / Math.max(lw, lh));
+      const c = document.createElement('canvas');
+      c.width = Math.max(1, Math.round(lw * esc)); c.height = Math.max(1, Math.round(lh * esc));
+      const x = c.getContext('2d');
+      x.imageSmoothingQuality = 'high';
+      x.drawImage(fonte, Math.round((W - lw) / 2), Math.round((H - lh) / 2), lw, lh, 0, 0, c.width, c.height);
+      return c;
+    }
+
+    // Tenta várias leituras em sequência; para na primeira que der certo
+    function tentarEmSequencia(geradores) {
+      let i = 0;
+      function proxima() {
+        if (i >= geradores.length) return Promise.resolve(null);
+        const canvas = geradores[i++]();
+        return decodificar(canvas).then(function(t) { return t || proxima(); });
+      }
+      return proxima();
+    }
+
+    // Leitura completa de uma imagem (foto): inteira, centro e cada área com cara de código
+    function lerCodigoEm(fonte, W, H) {
+      const g = [
+        function() { return recortarCentro(fonte, W, H, 1, detectorNativo ? 2000 : 1600); },
+        function() { return recortarCentro(fonte, W, H, 0.6, 1600); }
+      ];
+      candidatosCodigo(fonte, W, H, 6).forEach(function(cd, i) {
+        g.push(function() { return recortarCentrado(fonte, W, H, cd.x, cd.y, Math.max(160, cd.lado * 1.8), 900); });
+        if (i < 2) g.push(function() { return recortarCentrado(fonte, W, H, cd.x, cd.y, Math.max(240, cd.lado * 3), 1000); });
+      });
+      return tentarEmSequencia(g);
+    }
+
+    // Lê um quadro da câmera. Alterna: quadrado grande do centro (75%), quadrado fechado (45%)
+    // e, a cada 3 quadros, procura o código no quadro inteiro (não precisa estar centralizado).
+    // Se demorar, mostra dica (no celular o mais comum é estar perto demais e a câmera não focar)
+    let inicioLeituraQR = 0;
+    function dicaQR(demorando) {
+      const el = document.getElementById('qrDica');
+      el.className = demorando ? 'small mt-2 text-warning-emphasis fw-semibold' : 'small text-muted mt-2';
+      el.innerText = demorando
+        ? 'Ainda procurando o código... Afaste um pouco o celular (uns 15 cm) para a câmera focar, deixe o código dentro do quadrado e com boa luz. Se tiver, use o zoom.'
+        : 'Aponte a câmera para o código da etiqueta, dentro do quadrado. A leitura é automática — não precisa tirar foto.';
+    }
+
+    function lerQuadro() {
+      if (!lendoQR) return;
+      if (inicioLeituraQR && Date.now() - inicioLeituraQR > 6000) { dicaQR(true); inicioLeituraQR = 0; }
+      const vw = videoQR.videoWidth, vh = videoQR.videoHeight;
+      if (!vw || !vh) { setTimeout(lerQuadro, 200); return; }
+      const etapa = cicloQR++ % 3;
+      let leitura;
+      if (etapa === 2) {
+        // procura o código no quadro inteiro e lê centrado nele
+        const quadro = recortarCentro(videoQR, vw, vh, 1, 1280);
+        const qw = quadro.width, qh = quadro.height;
+        const g = detectorNativo
+          ? [function() { return quadro; }]
+          : candidatosCodigo(quadro, qw, qh, 3).map(function(cd) {
+              return function() { return recortarCentrado(quadro, qw, qh, cd.x, cd.y, Math.max(120, cd.lado * 1.8), 700); };
+            });
+        leitura = tentarEmSequencia(g);
+      } else {
+        const fracao = etapa === 0 ? 0.75 : 0.45;
+        const lado = Math.round(Math.min(vw, vh) * fracao);
+        // resolução real da câmera (limitada a 1200 px)
+        leitura = decodificar(recortarCentrado(videoQR, vw, vh, vw / 2, vh / 2, lado, 1200));
+      }
+      leitura.then(function(texto) {
+        if (!lendoQR) return;
+        if (texto) {
+          if (parsearEtiqueta(texto)) {
+            lendoQR = false;
+            document.getElementById('qrMira').classList.add('lido');
+            if (navigator.vibrate) navigator.vibrate(80);
+            aplicarQR(texto);
+            return;
+          }
+          aplicarQR(texto); // código lido, mas de outro formato: mostra o aviso e continua
+        }
+        setTimeout(lerQuadro, 60);
+      }).catch(function() { if (lendoQR) setTimeout(lerQuadro, 150); });
+    }
+
+    function pararLeitor() {
+      lendoQR = false;
+      sessaoQR++;
+      pararStreamQR();
+      return Promise.resolve();
+    }
+
+    // Zoom e lanterna, quando a câmera do aparelho oferece
+    function configurarZoomLanterna(track) {
+      const caixa = document.getElementById('qrControles');
+      const zoomBox = document.getElementById('qrZoomBox');
+      const lanterna = document.getElementById('qrLanterna');
+      caixa.classList.add('d-none'); zoomBox.classList.add('d-none'); lanterna.classList.add('d-none');
+      if (!track || !track.getCapabilities) return;
+      let cap = {};
+      try { cap = track.getCapabilities() || {}; } catch (e) { return; }
+      // foco contínuo, se der
+      if (cap.focusMode && cap.focusMode.indexOf('continuous') >= 0) {
+        track.applyConstraints({ advanced: [{ focusMode: 'continuous' }] }).catch(function() {});
+      }
+      if (cap.zoom && cap.zoom.max > cap.zoom.min) {
+        const r = document.getElementById('qrZoom');
+        const atual = (track.getSettings && track.getSettings().zoom) || cap.zoom.min;
+        r.min = cap.zoom.min; r.max = cap.zoom.max; r.step = cap.zoom.step || 0.1; r.value = atual;
+        document.getElementById('qrZoomVal').innerText = (+atual).toFixed(1) + 'x';
+        r.oninput = function() {
+          document.getElementById('qrZoomVal').innerText = (+r.value).toFixed(1) + 'x';
+          track.applyConstraints({ advanced: [{ zoom: +r.value }] }).catch(function() {});
+        };
+        zoomBox.classList.remove('d-none');
+        caixa.classList.remove('d-none');
+      }
+      if (cap.torch) {
+        let ligada = false;
+        lanterna.onclick = function() {
+          ligada = !ligada;
+          track.applyConstraints({ advanced: [{ torch: ligada }] }).catch(function() {});
+          lanterna.classList.toggle('active', ligada);
+        };
+        lanterna.classList.remove('d-none');
+        caixa.classList.remove('d-none');
+      }
+    }
+
+    elModalQR.addEventListener('hidden.bs.modal', function() {
+      pararLeitor();
+      document.getElementById('qrControles').classList.add('d-none');
+    });
+
+    window.addEventListener('resize', function() { if (streamQR) ajustarMira(); });
+
+    // Lê o código de uma foto (procura o código na foto inteira — não precisa estar centralizado)
+    function lerCodigoDeArquivo(file) {
+      return new Promise(function(ok, falha) {
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = function() { URL.revokeObjectURL(url); ok(img); };
+        img.onerror = function() { URL.revokeObjectURL(url); falha(new Error('imagem inválida')); };
+        img.src = url;
+      }).then(function(img) {
+        return prepararDecodificador().then(function() {
+          return lerCodigoEm(img, img.naturalWidth, img.naturalHeight);
+        });
+      });
+    }
+
+    function lerQRDeFoto(event) {
+      const input = event.target;
+      const file = input.files[0];
+      input.value = '';
+      if (!file) return;
+      const status = document.getElementById('qrStatus');
+      status.className = 'small mt-1 text-primary';
+      status.innerText = 'Lendo o código da foto...';
+      pararLeitor().then(function() {
+        return lerCodigoDeArquivo(file);
+      }).then(function(texto) {
+        if (!texto) throw new Error('sem código');
+        aplicarQR(texto);
+        if (!parsearEtiqueta(texto)) mostrarErroFotoQR('Código lido, mas fora do formato esperado: ' + texto);
+      }).catch(function() {
+        mostrarErroFotoQR('Não encontrei o código nessa foto. Tire a foto mais de perto, com o código bem visível e nítido.');
+      });
+    }
+
+    function mostrarErroFotoQR(msg) {
+      const status = document.getElementById('qrStatus');
+      status.className = 'small mt-1 text-danger';
+      status.innerText = msg;
+      const erro = document.getElementById('qrErro');
+      erro.innerText = msg;
+      erro.classList.remove('d-none');
+      if (!elModalQR.classList.contains('show')) modalQR.show();
+    }
+
+    function usarTextoManual() {
+      aplicarQR(document.getElementById('qrTextoManual').value);
+    }
+
+    function aplicarQR(texto) {
+      const dados = parsearEtiqueta(texto);
+      const status = document.getElementById('qrStatus');
+      if (!dados) {
+        const erro = document.getElementById('qrErro');
+        erro.innerText = 'QR lido, mas fora do formato esperado: ' + texto;
+        erro.classList.remove('d-none');
+        return;
+      }
+      document.getElementById('codigo').value = dados.codigo;
+      document.getElementById('quantPacote').value = dados.quantPacote;
+      atualizarQuantPorCodigo();
+      status.className = 'small mt-1 text-success';
+      status.innerText = 'QR lido: código ' + dados.codigo + ' · padrão por pacote ' + dados.quantPacote;
+      modalQR.hide();
+    }
+
+    function removerFoto() {
+      base64Imagem = '';
+      fotoOriginal = '';
+      estadoCadastro = null;
+      document.getElementById('imgPrevia').removeAttribute('src');
+      document.getElementById('containerPrevia').style.display = 'none';
+      document.getElementById('fotoVazia').style.display = 'block';
+    }
+
+    function enviarFormulario(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSalvar');
+      const alerta = document.getElementById('alerta');
+
+      if (!base64Imagem) {
+        alerta.className = 'alert alert-warning';
+        alerta.innerText = 'Tire ou escolha a foto da PCB primeiro (Passo 1).';
+        alerta.classList.remove('d-none');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Salvando...';
+
+      const payload = {
+        codigo: formatarCodigos(document.getElementById('codigo').value, false),
+        quantPainel: document.getElementById('quantPainel').value,
+        quantPacote: valorPacote(),
+        fornecedor: document.getElementById('fornecedor').value,
+        imagemBase64: base64Imagem
+      };
+
+      google.script.run
+        .withSuccessHandler(function(res) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-check-lg me-1"></i> Salvar Registro';
+          alerta.className = 'alert ' + (res.sucesso ? 'alert-success' : 'alert-danger');
+          alerta.innerText = res.mensagem;
+          alerta.classList.remove('d-none');
+
+          if (res.sucesso) {
+            document.getElementById('formCadastro').reset();
+            removerFoto();
+            Object.keys(quantGuardadas).forEach(function(k) { delete quantGuardadas[k]; });
+            atualizarQuantPorCodigo();
+            document.getElementById('qrStatus').innerText = '';
+            carregarFornecedores();
+          }
+        })
+        .withFailureHandler(function(err) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-check-lg me-1"></i> Salvar Registro';
+          alerta.className = 'alert alert-danger';
+          alerta.innerText = 'Falha ao salvar: ' + err.message;
+          alerta.classList.remove('d-none');
+        })
+        .salvarRegistro(payload);
+    }
+
+    function carregarDados() {
+      const corpo = document.getElementById('tabelaCorpo');
+      corpo.innerHTML = '<tr><td colspan="5" class="text-center py-4"><span class="spinner-border spinner-border-sm me-2"></span>Buscando PCBs na planilha...</td></tr>';
+
+      google.script.run
+        .withSuccessHandler(function(dados) {
+          registrosGlobais = dados;
+          atualizarFornecedores(dados);
+          renderizarTabela(dados);
+        })
+        .withFailureHandler(function(err) {
+          corpo.innerHTML = `<tr><td colspan="5" class="text-center text-danger">Erro: ${err.message}</td></tr>`;
+        })
+        .obterRegistros();
+    }
+
+    // ===== Paginação da lista (10 por página) =====
+    const POR_PAGINA = 10;
+    let listaExibida = [];
+    let paginaAtual = 1;
+
+    function renderizarPaginacao() {
+      const total = Math.ceil(listaExibida.length / POR_PAGINA);
+      const ul = document.getElementById('paginacao');
+      const info = document.getElementById('infoPaginacao');
+
+      if (listaExibida.length === 0) {
+        ul.innerHTML = '';
+        info.innerText = '';
+        return;
+      }
+
+      const ini = (paginaAtual - 1) * POR_PAGINA + 1;
+      const fim = Math.min(paginaAtual * POR_PAGINA, listaExibida.length);
+      info.innerText = 'Mostrando ' + ini + '–' + fim + ' de ' + listaExibida.length + ' · Página ' + paginaAtual + ' de ' + total;
+
+      const item = function(rotulo, pagina, desativado, ativo) {
+        return '<li class="page-item' + (desativado ? ' disabled' : '') + (ativo ? ' active' : '') + '">' +
+          '<button type="button" class="page-link" data-pagina="' + pagina + '"' + (desativado ? ' disabled' : '') + '>' + rotulo + '</button></li>';
+      };
+
+      let html = item('Anterior', paginaAtual - 1, paginaAtual === 1, false);
+      let ultimoFoiReticencias = false;
+      for (let i = 1; i <= total; i++) {
+        if (i === 1 || i === total || Math.abs(i - paginaAtual) <= 1) {
+          html += item(i, i, false, i === paginaAtual);
+          ultimoFoiReticencias = false;
+        } else if (!ultimoFoiReticencias) {
+          html += '<li class="page-item disabled"><span class="page-link">…</span></li>';
+          ultimoFoiReticencias = true;
+        }
+      }
+      html += item('Próximo', paginaAtual + 1, paginaAtual === total, false);
+      ul.innerHTML = html;
+    }
+
+    document.getElementById('paginacao').addEventListener('click', function(e) {
+      const botao = e.target.closest('button[data-pagina]');
+      if (!botao || botao.disabled) return;
+      renderizarTabela(listaExibida, parseInt(botao.dataset.pagina, 10));
+      document.querySelector('.lista-scroll').scrollTop = 0;
+    });
+
+    function renderizarTabela(lista, pagina) {
+      const corpo = document.getElementById('tabelaCorpo');
+      listaExibida = lista || [];
+      const totalPaginas = Math.max(1, Math.ceil(listaExibida.length / POR_PAGINA));
+      paginaAtual = Math.min(Math.max(pagina || 1, 1), totalPaginas);
+
+      if (listaExibida.length === 0) {
+        corpo.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Nenhum registro encontrado.</td></tr>';
+        renderizarPaginacao();
+        return;
+      }
+      const itensDaPagina = listaExibida.slice((paginaAtual - 1) * POR_PAGINA, paginaAtual * POR_PAGINA);
+
+      const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+      // "5000 / 3000" com 2 códigos -> uma linha por código; senão mostra o valor como está
+      const formatarPacote = (item, esc) => {
+        const q = String(item.quantPacote == null ? '' : item.quantPacote).split(/\s*\/\s*/).filter(Boolean);
+        const c = String(item.codigo).split(/\s*\/\s*/).filter(Boolean);
+        if (q.length > 1 && q.length === c.length) {
+          return c.map((cod, i) => `<div><span class="text-muted small">${esc(cod)}</span> <b>${esc(q[i])}</b></div>`).join('');
+        }
+        return esc(item.quantPacote);
+      };
+
+      corpo.innerHTML = itensDaPagina.map(item => `
+        <tr>
+          <td>
+            ${item.imagem
+              ? `<img src="${esc(item.imagem)}" data-full="${esc(item.imagem)}" data-legenda="${esc(item.codigo)}" data-linha="${esc(item.linhaIndex)}" data-coluna="${esc(item.colunaImagem)}" title="Clique para ampliar" class="table-img border" onerror="this.src='https://via.placeholder.com/65?text=Erro'">`
+              : '<span class="text-muted small">Sem foto</span>'}
+          </td>
+          <td class="col-codigo">${esc(item.codigo)}</td>
+          <td class="col-num">${esc(item.quantPainel)}</td>
+          <td>${esc(item.fornecedor)}</td>
+          <td class="col-num">${formatarPacote(item, esc)}</td>
+        </tr>
+      `).join('');
+      renderizarPaginacao();
+    }
+
+    // ===== Ajustar uma foto já cadastrada (recortar, clarear, nitidez) =====
+    let fotoAberta = null; // { url, linha, coluna } da foto exibida na janela ampliada
+
+    function ajustarFotoRegistrada() {
+      if (!fotoAberta) return;
+      if (fotoAberta.dataUrl) {
+        const pronta = fotoAberta.dataUrl;
+        edicaoRegistro = { linha: fotoAberta.linha, coluna: fotoAberta.coluna };
+        elModalFoto.addEventListener('hidden.bs.modal', function abrirJa() {
+          elModalFoto.removeEventListener('hidden.bs.modal', abrirJa);
+          abrirEditor(pronta);
+        });
+        modalFoto.hide();
+        return;
+      }
+      const btn = document.getElementById('btnAjustarFoto');
+      const erro = document.getElementById('fotoErro');
+      const rotulo = btn.querySelector('span');
+      erro.classList.add('d-none');
+      btn.disabled = true;
+      rotulo.innerText = 'Carregando...';
+
+      google.script.run
+        .withSuccessHandler(function(dataUrl) {
+          btn.disabled = false;
+          rotulo.innerText = 'Ajustar foto';
+          edicaoRegistro = { linha: fotoAberta.linha, coluna: fotoAberta.coluna };
+          // fecha a janela ampliada e só então abre o editor (evita duas janelas sobrepostas)
+          elModalFoto.addEventListener('hidden.bs.modal', function abrir() {
+            elModalFoto.removeEventListener('hidden.bs.modal', abrir);
+            abrirEditor(dataUrl);
+          });
+          modalFoto.hide();
+        })
+        .withFailureHandler(function(err) {
+          btn.disabled = false;
+          rotulo.innerText = 'Ajustar foto';
+          erro.innerText = 'Não foi possível carregar a foto: ' + err.message;
+          erro.classList.remove('d-none');
+        })
+        .obterFotoBase64(fotoAberta.url);
+    }
+
+    function salvarFotoEditada(dataUrl) {
+      const btn = document.getElementById('btnUsarFoto');
+      const txt = document.getElementById('txtUsarFoto');
+      const cancelar = document.getElementById('btnCancelarEditor');
+      const erro = document.getElementById('editorErro');
+      erro.classList.add('d-none');
+      btn.disabled = true;
+      cancelar.disabled = true;
+      txt.innerText = 'Salvando...';
+
+      google.script.run
+        .withSuccessHandler(function(res) {
+          btn.disabled = false;
+          cancelar.disabled = false;
+          txt.innerText = 'Salvar foto';
+          if (res && res.sucesso) {
+            edicaoRegistro = null;
+            modalEditor.hide();
+            carregarDados();
+          } else {
+            erro.innerText = (res && res.mensagem) || 'Não foi possível salvar a foto.';
+            erro.classList.remove('d-none');
+          }
+        })
+        .withFailureHandler(function(err) {
+          btn.disabled = false;
+          cancelar.disabled = false;
+          txt.innerText = 'Salvar foto';
+          erro.innerText = 'Falha ao salvar: ' + err.message;
+          erro.classList.remove('d-none');
+        })
+        .atualizarFoto({ linhaIndex: edicaoRegistro.linha, coluna: edicaoRegistro.coluna, imagemBase64: dataUrl });
+    }
+
+    // Clique na miniatura da tabela -> foto ampliada (com zoom)
+    const elModalFoto = document.getElementById('modalFoto');
+    const modalFoto = new bootstrap.Modal(elModalFoto);
+    const viewportFoto = document.getElementById('fotoViewport');
+    const imgFoto = document.getElementById('fotoGrande');
+    const ZOOM_MAX = 10;
+    let zoom = 1, desX = 0, desY = 0;
+    const ponteiros = new Map();
+    let distanciaPinca = 0;
+
+    document.getElementById('tabelaCorpo').addEventListener('click', function(e) {
+      const img = e.target.closest('img[data-full]');
+      if (!img) return;
+      resetarZoomFoto();
+      const aberta = { url: img.dataset.full, linha: parseInt(img.dataset.linha, 10), coluna: parseInt(img.dataset.coluna, 10), dataUrl: null };
+      fotoAberta = aberta;
+      document.getElementById('fotoErro').classList.add('d-none');
+      imgFoto.src = img.dataset.full;
+      // o link lh3 do Google pode vir reduzido/recomprimido: troca pelo arquivo salvo no Drive
+      google.script.run
+        .withSuccessHandler(function(dataUrl) {
+          aberta.dataUrl = dataUrl;
+          if (fotoAberta === aberta) imgFoto.src = dataUrl;
+        })
+        .withFailureHandler(function() {})
+        .obterFotoBase64(aberta.url);
+      document.getElementById('fotoAbrirAba').href = img.dataset.full;
+      document.getElementById('fotoLegenda').innerText = 'Código ' + (img.dataset.legenda || '');
+      modalFoto.show();
+    });
+
+    function aplicarZoomFoto() {
+      imgFoto.style.transform = 'translate(' + desX + 'px,' + desY + 'px) scale(' + zoom + ')';
+      viewportFoto.classList.toggle('ampliada', zoom > 1);
+      document.getElementById('fotoZoomInfo').innerText = Math.round(zoom * 100) + '%';
+    }
+
+    function resetarZoomFoto() {
+      zoom = 1; desX = 0; desY = 0;
+      aplicarZoomFoto();
+    }
+
+    // Zoom mantendo fixo o ponto sob o cursor. (cx, cy) em px a partir do centro da área.
+    function zoomFotoEm(fator, cx, cy) {
+      const novo = Math.min(ZOOM_MAX, Math.max(1, zoom * fator));
+      if (novo === zoom) return;
+      const ux = (cx - desX) / zoom, uy = (cy - desY) / zoom;
+      zoom = novo;
+      desX = cx - ux * zoom;
+      desY = cy - uy * zoom;
+      if (zoom === 1) { desX = 0; desY = 0; }
+      aplicarZoomFoto();
+    }
+
+    function zoomFoto(fator) { zoomFotoEm(fator, 0, 0); }
+
+    function centroRelativo(clientX, clientY) {
+      const r = viewportFoto.getBoundingClientRect();
+      return { x: clientX - (r.left + r.width / 2), y: clientY - (r.top + r.height / 2) };
+    }
+
+    // Roda do mouse
+    viewportFoto.addEventListener('wheel', function(e) {
+      e.preventDefault();
+      const p = centroRelativo(e.clientX, e.clientY);
+      zoomFotoEm(e.deltaY < 0 ? 1.2 : 1 / 1.2, p.x, p.y);
+    }, { passive: false });
+
+    // Duplo clique / duplo toque: amplia no ponto clicado ou volta ao ajuste.
+    // Detectado à mão (dois toques curtos seguidos) porque o evento dblclick não dispara em celular.
+    let inicioToque = null;
+    let ultimoToque = { t: 0, x: 0, y: 0 };
+
+    function duploToque(clientX, clientY) {
+      if (zoom > 1) { resetarZoomFoto(); return; }
+      const p = centroRelativo(clientX, clientY);
+      zoomFotoEm(3, p.x, p.y);
+    }
+
+    // Arrastar para mover (mouse e toque) e pinça com dois dedos
+    viewportFoto.addEventListener('pointerdown', function(e) {
+      viewportFoto.setPointerCapture(e.pointerId);
+      ponteiros.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      inicioToque = ponteiros.size === 1 ? { x: e.clientX, y: e.clientY } : null;
+      if (ponteiros.size === 2) {
+        const [a, b] = Array.from(ponteiros.values());
+        distanciaPinca = Math.hypot(a.x - b.x, a.y - b.y);
+      }
+      if (zoom > 1) viewportFoto.classList.add('arrastando');
+    });
+
+    viewportFoto.addEventListener('pointermove', function(e) {
+      const anterior = ponteiros.get(e.pointerId);
+      if (!anterior) return;
+      ponteiros.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+      if (ponteiros.size === 2) {
+        const [a, b] = Array.from(ponteiros.values());
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (distanciaPinca) {
+          const p = centroRelativo((a.x + b.x) / 2, (a.y + b.y) / 2);
+          zoomFotoEm(dist / distanciaPinca, p.x, p.y);
+        }
+        distanciaPinca = dist;
+      } else if (zoom > 1) {
+        desX += e.clientX - anterior.x;
+        desY += e.clientY - anterior.y;
+        aplicarZoomFoto();
+      }
+    });
+
+    function soltarPonteiro(e) {
+      ponteiros.delete(e.pointerId);
+      distanciaPinca = 0;
+      if (ponteiros.size === 0) viewportFoto.classList.remove('arrastando');
+    }
+    viewportFoto.addEventListener('pointerup', function(e) {
+      // toque curto, sem arrastar? então conta para o duplo toque
+      if (inicioToque && ponteiros.size === 1 && Math.hypot(e.clientX - inicioToque.x, e.clientY - inicioToque.y) < 8) {
+        const agora = Date.now();
+        if (agora - ultimoToque.t < 350 && Math.hypot(e.clientX - ultimoToque.x, e.clientY - ultimoToque.y) < 30) {
+          ultimoToque.t = 0;
+          duploToque(e.clientX, e.clientY);
+        } else {
+          ultimoToque = { t: agora, x: e.clientX, y: e.clientY };
+        }
+      }
+      inicioToque = null;
+      soltarPonteiro(e);
+    });
+    viewportFoto.addEventListener('pointercancel', function(e) { inicioToque = null; soltarPonteiro(e); });
+
+    function limparBusca() {
+      const campo = document.getElementById('filtroPesquisa');
+      campo.value = '';
+      filtrarTabela();
+      campo.focus();
+    }
+
+    function filtrarTabela() {
+      const termo = document.getElementById('filtroPesquisa').value.toLowerCase();
+      document.getElementById('btnLimparBusca').classList.toggle('d-none', termo === '');
+      const filtrados = registrosGlobais.filter(item => 
+        (item.codigo && item.codigo.toString().toLowerCase().includes(termo)) ||
+        (item.fornecedor && item.fornecedor.toString().toLowerCase().includes(termo))
+      );
+      renderizarTabela(filtrados);
+    }
+  </script>
+</body>
+</html>
